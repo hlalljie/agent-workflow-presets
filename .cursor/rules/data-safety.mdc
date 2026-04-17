@@ -1,0 +1,11 @@
+---
+description: Never modify real/production data without explicit permission
+alwaysApply: true
+---
+
+Do not write code or run commands that modify real data without explicit permission. This includes database records, external service data, and any destructive operations.
+
+Before anything destructive:
+1. Confirm with user which records are safe to affect
+2. Prefer read-only probes first to verify targeting
+3. Proceed only after explicit approval

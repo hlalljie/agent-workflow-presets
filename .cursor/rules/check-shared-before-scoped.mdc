@@ -1,0 +1,10 @@
+---
+description: Before making a scoped change, check if shared code already handles it
+alwaysApply: true
+---
+
+Before writing a scoped override (targeting a specific component, ID, or section), check if a shared class, function, or component already handles that behavior.
+
+If yes — ask: "This looks like it's handled by [shared thing] for all [types] — should the change apply everywhere or just here?"
+
+Applies to CSS overrides, component-specific logic that mirrors shared logic, and markup added to one variant that others don't have.

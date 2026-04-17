@@ -1,0 +1,14 @@
+---
+description: Check for existing files before creating. Be conservative about new files and code.
+alwaysApply: true
+---
+
+Before creating any file, check if similar functionality exists. Use search/glob to find existing files. Ask if user wants to modify existing or create new.
+
+Only create files that are explicitly requested or required by a task. Keep code in the file that uses it — don't extract into a new file unless there's a clear reuse need.
+
+Prefer less code. Don't create abstractions or files "for future use." Look for reuse and refactoring opportunities before writing new code. When in doubt, don't create it.
+
+Before writing new styles or components, check how similar things are already done in the codebase and follow existing patterns.
+
+**New folders and naming:** Do not invent folder names that don't exist elsewhere in the codebase. Before creating a subfolder, check how the closest existing feature of the same type organizes the same concept and mirror it. See **`docs/folder-structure.md`** for the canonical map.

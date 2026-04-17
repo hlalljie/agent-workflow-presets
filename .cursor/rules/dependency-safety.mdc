@@ -1,0 +1,17 @@
+---
+description: Never install packages without approval. Research before proposing.
+alwaysApply: true
+---
+
+Never run `npm install`, `npm add`, `npx`, or any package install command without explicit user approval.
+
+**Intent:** Approval is a **gate on risky or careless adds**, not a reason to avoid libraries or hand-roll proven solutions. When a dependency is appropriate, research it, propose **one** strong option, and get approval—do not skip a good library just to bypass this process.
+
+Before proposing a dependency:
+1. Research that it works, is maintained, and is the right tool
+2. Check npm download counts and last publish date
+3. Check for known security issues. If the package has vulnerabilities but is still widely used, present the specific risks to the user
+4. Confirm it works with the project's runtime and framework versions
+5. Propose it with findings, then wait for approval
+
+Do not install multiple libraries trying to find one that works. Research first, propose one verified option.

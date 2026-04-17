@@ -1,0 +1,9 @@
+---
+description: Next.js version awareness
+globs: src/**/*.ts, src/**/*.tsx, next.config.ts
+alwaysApply: false
+---
+
+<!-- TODO: Update the version number below to match this project's Next.js version. -->
+
+This project uses Next.js [VERSION] which may have breaking changes from earlier versions. Before writing Next.js code, check `node_modules/next/dist/docs/` for the bundled guides. Heed deprecation notices.

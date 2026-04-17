@@ -1,0 +1,44 @@
+---
+description: Shell environment — zsh on macOS, PowerShell on Windows
+alwaysApply: true
+---
+
+# Shell Environment
+
+## Target Shell by Platform
+
+- **macOS / Linux**: write shell snippets assuming **zsh** (or a compatible POSIX shell).
+- **Windows**: write shell snippets assuming **PowerShell**.
+
+The goal is that a developer on each platform can copy/paste commands into their default shell without translation.
+
+## macOS / Linux (zsh / POSIX shell)
+
+- Use `&&` for chaining commands where failures should stop the chain.
+- Use standard Unix tools (`head`, `tail`, `grep`, `ls -t`, `sed`, `awk`) and heredocs for multi-line input.
+- Avoid Windows-only constructs or PowerShell cmdlets in examples intended for macOS/Linux.
+
+✅ Example (macOS / Linux):
+
+```bash
+git add models/template.js models/template.html
+git commit -m "Update height formulas"
+```
+
+## Windows (PowerShell)
+
+- Use PowerShell cmdlets where appropriate (`Get-ChildItem`, `Select-Object`, etc.).
+- For multi-line git commit messages, prefer opening the editor (`git commit`) or using a file you create in your editor, rather than ad-hoc Python helpers.
+- Avoid assuming bash-only features (e.g., `[[ ... ]]`, process substitution) in Windows-specific instructions.
+
+✅ Example (Windows):
+
+```powershell
+git add models/template.js models/template.html
+git commit -m "Update height formulas"
+```
+
+## General Guidance
+
+- When giving cross-platform instructions, call out both variants if they differ (zsh/Unix vs PowerShell).
+- Do not use inline Python (`python - << 'EOF'`) just to drive git; use the platform shell or a small script checked into the repo instead.

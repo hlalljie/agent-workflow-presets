@@ -1,0 +1,27 @@
+---
+description: Formatting rules for all markdown docs. Optimizes for editor readability, not preview mode.
+alwaysApply: true
+---
+
+User reads markdown in the editor, not preview. Everything must be scannable as raw text.
+
+Do:
+- Short paragraphs (2-4 sentences)
+- Bullet lists for discrete items
+- Numbered lists when order or reference matters
+- Bold for key terms inline
+- `- [ ]` checkboxes when tracking completion
+- Blank lines between sections
+- `##` / `###` headers to break up content
+- Links inline where they naturally fit
+
+Do not:
+- Markdown tables — unreadable without preview. Use prose with bold labels or lists. No exceptions.
+- Excessive bold/italic
+- Deeply nested bullets (2 levels max)
+- Long unbroken paragraphs
+- Emoji unless asked
+- Repeating same info in different formats
+- Inline HTML
+- `####` or deeper headers — restructure instead
+- Hard line wraps at 80 chars — let editor handle it

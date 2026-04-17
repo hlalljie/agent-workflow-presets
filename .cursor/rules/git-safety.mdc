@@ -1,0 +1,9 @@
+---
+description: Never run git add, git commit, gh pr create, or git push without following the commit or pr skill.
+alwaysApply: true
+---
+
+Never run `git add`, `git commit`, `gh pr create`, or `git push` directly.
+
+If the user wants to commit, follow the [commit skill](../skills/commit/SKILL.md).
+If the user wants a PR, follow the [pr skill](../skills/pr/SKILL.md).

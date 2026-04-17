@@ -1,0 +1,15 @@
+---
+description: Documentation standards for code comments and docstrings
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+Document why, not what. Only add a comment if it conveys information the code itself cannot. Never narrate what the code obviously does.
+
+Do document: purpose, constraints, trade-offs, non-obvious decisions, known debt with pointers to tasks.
+
+Do not document: obvious logic, simple wrappers, self-evident one-liners.
+
+Module/file-level comments: explain what the module owns and any non-obvious limitations.
+
+Function/component comments: only when there are meaningful constraints, failure modes, or side effects beyond what the name and types convey.

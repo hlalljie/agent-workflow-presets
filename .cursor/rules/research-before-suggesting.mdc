@@ -1,0 +1,17 @@
+---
+description: Never make up features, APIs, or config options. Research before suggesting technical solutions.
+alwaysApply: true
+---
+
+Do not invent or assume features, flags, APIs, or config options exist. Do not claim something works based on "what makes sense."
+
+When suggesting technical solutions involving library APIs, CLI tools, framework features, or packages:
+1. Search docs or web to verify it exists
+2. Confirm exact syntax and behavior
+3. Only then suggest it
+
+When uncertain, say so and research first.
+
+**Applies to internal codebase too:** Before creating a new component, folder, utility, or pattern, **read the existing codebase** to see how the same kind of thing is already done. Check `docs/folder-structure.md`, then read the nearest existing implementation. Do not assume a structure is correct because it "makes sense" — verify it matches what already exists.
+
+If the question requires comparing options or making an architectural decision, use the [research skill](../skills/research/SKILL.md) for a deeper investigation.

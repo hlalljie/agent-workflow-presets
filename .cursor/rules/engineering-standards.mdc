@@ -1,0 +1,15 @@
+---
+description: Engineering quality — security defaults, show options when planning, think through failure modes
+alwaysApply: true
+---
+
+When planning or discussing: present viable options with trade-offs. Don't collapse to one answer when multiple good approaches exist.
+
+When implementing: apply the right approach for context. If user wants something exploratory or throwaway, confirm trade-offs and proceed.
+
+Security defaults for committed/production code:
+- Secrets in env vars or secret manager, never in code or CLI args
+- Authenticated endpoints by default
+- Least-privilege access
+
+Think through failure modes, rollback, and cost before suggesting. If a previous suggestion was wrong, say so and correct it. If something creates future problems, flag it.

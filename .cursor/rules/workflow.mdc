@@ -1,0 +1,61 @@
+---
+description: How to manage open questions, tasks, plans, and decisions. Fires when editing plan, task, decision, or open-question files.
+globs: .cursor/plans/**/*.md, .cursor/**/open-questions.md
+---
+
+## Open questions
+
+Each plan folder has its own `open-questions.md`. Numbers are scoped to that file (each file starts at 1). Numbers are permanent within their file — never renumber, never reuse.
+
+Format: `- [ ] N. Short description. Context/links inline.`
+
+Adding: pick next unused number in that file. One line with `- [ ]`. If it needs research, create a research doc and link it.
+
+Resolving: check the box (`- [x]`). Record in that plan's `decisions.md`. Update the plan to reflect the decision — remove blocker references, update any sections that were pending this answer. Removing lines from this file after resolution is handled by the `/commit` flow (commit skill, "After committing") — not here.
+
+Questions can be "parked" or "future" inline if not blocking anything now.
+
+Reference from other docs within the same plan: "blocked by open question 2." Cross-plan references: "blocked by project open question 2" or "blocked by meta open question 6."
+
+## Research docs
+
+Research is standalone. It does not contain status markers, links to open questions, or links to plans. Other docs link to research; research links to nothing upstream.
+
+## Executing tasks
+
+Normative scope for **how many** tasks to touch lives in **`task-scope.mdc`** (`alwaysApply: true`). This section is the plan-format companion.
+
+- One task at a time. Complete it, commit, and stop for verification before starting the next.
+- Batch: only when `task-scope.mdc` allows it (explicit multiple task numbers in one message, or `batchable: true` on the task file's first line **and** the user asked to batch in that message).
+- When delegating to subagents: the prompt must enforce this cadence. Tell the agent to do one task, commit, and return. Do not tell it to "implement all tasks."
+
+## When a task completes
+
+1. Check task box.
+2. If it resolves an open question: check that box too, update decisions.
+3. If it changes plan scope: update the plan.
+4. Otherwise just check and move on.
+
+## When a plan phase completes
+
+1. Mark phase done in plan.
+2. Check all tasks for that phase.
+3. Resolve any open questions that were answered.
+4. Update decisions.md.
+
+## Decisions
+
+Each plan folder has a `decisions.md`. A concise log for "why did we decide this?" and for checking new work against past decisions. Not for regular reading.
+
+Format: bulleted list. **Bold decision** — rationale in one sentence. Link to research if relevant.
+
+Record when: open question resolved, user makes a call during conversation, plan confirmed.
+
+## General
+
+- **Plan vs tasks:** `plan.md` describes phases only; it does not link to `tasks/*.md`. Task lists link *to* the plan phase they implement. Keeps a single direction of reference and less churn.
+- **Skills for plan artifacts:** New phase-level plans (no code, no task lists): [draft-plan](../skills/draft-plan/SKILL.md). New **`### Task N`** checklists under `.cursor/plans/**/tasks/*.md`: [create-task-list](../skills/create-task-list/SKILL.md).
+- Do not duplicate information across docs. Each piece of information lives in one place. Plans link to research; open questions link to research. If you find yourself writing the same thing in two files, pick one and link from the other.
+- No status markers in research docs.
+- Keep working docs concise — split or trim if long.
+- Ask: "will the next agent session need this to avoid redoing work?" If yes, write it down.

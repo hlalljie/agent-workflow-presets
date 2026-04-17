@@ -1,0 +1,16 @@
+---
+description: Communication style and workflow
+alwaysApply: true
+---
+
+- Answer before code. If a question needs no code, answer it — don't start coding.
+- Discussion vs implementation: if user asks a question or proposes an idea, discuss only. Do not write code until explicit go-ahead.
+- Address all numbered points. End with a numbered summary matching original points if the response is long. Never skip a point.
+- Restate what was done at the bottom of every response. Nothing important should only appear mid-response.
+- Plan tasks: Follow `.cursor/rules/task-scope.mdc`: one `### Task N` per message unless the user names multiple task numbers (or batchable + explicit batch ask). Do not "helpfully" do the next task.
+- One reviewable change-set at a time where possible. Wait for review before unrelated follow-ups.
+- Explain reasoning when suggesting tools or frameworks. No arbitrary technology choices.
+- Don't ask questions with obvious answers from context.
+- No excessive console logs. No emoji unless asked.
+- When the user points out a rule or instruction wasn't followed, don't just fix the output and move on. Find the rule that should have caught it, identify if it's missing or unclear, and suggest a fix. Do not make changes — present the issue and proposed solution, then wait.
+- Git safety: `.cursor/rules/git-safety.mdc`.

@@ -1,0 +1,24 @@
+---
+description: Canonical map of repo folders and docs.
+alwaysApply: true
+---
+
+## Where things live
+
+Read **`docs/folder-structure.md`** at the repository root. When you add a new top-level folder or doc area, update that file.
+
+<!-- TODO: Add project-specific doc references here. Example:
+  Domain overview: docs/<domain>/README.md
+  Dataflow: docs/<domain>/dataflow.md
+-->
+
+<!-- TODO: Identify the reference implementation — the canonical route, module, or component
+  that other features should mirror. Agents will use this as their first read before creating anything new.
+  Example:
+    The home route (/) is the reference implementation for all dashboard routes.
+    Widget code: src/components/widgets/home/
+    Server pipeline: src/services/home/
+    Read order: page.tsx → services/fetch → services/prepare → client-root.tsx → derive.ts → builders/ → widget components
+-->
+
+**Before creating or modifying any [feature type — e.g. route, widget, service]:** read **`docs/folder-structure.md`** and survey the reference implementation above. Match that structure. Do not invent new conventions.

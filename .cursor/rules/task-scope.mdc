@@ -1,0 +1,32 @@
+---
+description: Hard limits on how many plan tasks to implement per message. Always read before editing code for a task list.
+alwaysApply: true
+---
+
+## One task per message (default)
+
+A **task** is one numbered block in a plan task file, e.g. `### Task N: …` under `.cursor/plans/**/tasks/*.md`.
+
+- Implement **at most one** such task per user message **unless** a skill the user invoked or a user instructions **explicitly** directs otherwise (e.g. [run-task-loop](../skills/run-task-loop/SKILL.md) — work through tasks in order in that session until done, blocked, or that skill's handoff).
+- **Multi-task only if** the same message **explicitly names more than one task number** (e.g. "Task 3 and 5", "do 3, 5", "tasks 2–4").
+- **Or** the task file's **first line** (the `# …` title line) contains the literal substring `batchable: true`. Then the user must still say they want batching in that message; the flag only allows it, it does not auto-batch.
+
+## Forbidden expansions
+
+Without a new message that names another task number, **do not**:
+
+- Implement the next task because tests, MSW, build, or "verification" need it.
+- Add "small" wrappers, clients, or handlers for a **different** task section.
+- Mark additional checkboxes complete in the plan for work you were not asked to do.
+
+If work truly depends on another task, **state the dependency in prose and stop**. Do not implement the dependency unless the user then names that task.
+
+## Discussion is not implementation
+
+If the user is venting, reviewing a mistake, asking _why_, or debating process: **no repo edits** unless they give a separate, explicit implement instruction (e.g. "apply that patch", "revert task 4").
+
+## Ordering
+
+If the user references a task file but **no task number**: **do not guess**. Ask which `Task N` to run (one line).
+
+To **author** a new task file from a plan phase, use the [create-task-list skill](../skills/create-task-list/SKILL.md).
