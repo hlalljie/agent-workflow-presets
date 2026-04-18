@@ -1,4 +1,4 @@
-# agent-presets
+# agent-workflow-presets
 
 A portable `.cursor/` setup for agent-assisted development. Drop into any project and fill in the project-specific sections.
 
@@ -13,12 +13,10 @@ A portable `.cursor/` setup for agent-assisted development. Drop into any projec
 ## Setup for a new project
 
 1. Copy `.cursor/` and `docs/` into your project root.
-2. Search for `<!-- TODO:` across all files. Each one marks something project-specific to fill in.
-3. Key fill-ins:
-   - **`docs/folder-structure.md`** — describe your actual folder layout and add a "read order" guide for the most common "add a new X" task
-   - **`.cursor/rules/repository-layout.mdc`** — point to your domain docs and identify the reference implementation
-   - **`.cursor/rules/nextjs.mdc`** — update the version number (or delete this file if not a Next.js project)
-4. Initialize git in your project if not already done.
+2. In that project, ask the agent to run the **`setup` skill** (`.cursor/skills/setup/SKILL.md`). It will walk you through every `<!-- TODO: -->` marker, asking questions and writing the answers back into the right files.
+3. After setup completes, delete `.cursor/skills/setup/` — it's a one-time bootstrap tool.
+
+For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists every fill-in; work through them in the order the setup skill describes.
 
 ## Rules overview
 
@@ -40,6 +38,7 @@ A portable `.cursor/` setup for agent-assisted development. Drop into any projec
 
 ## Skills overview
 
+- **`setup`** — one-time bootstrap for a newly-copied preset; delete after running
 - **`commit`** — propose + approve flow; never commits without explicit approval
 - **`pr`** — propose + approve flow for pull requests
 - **`draft-plan`** — create phase-level project plans
