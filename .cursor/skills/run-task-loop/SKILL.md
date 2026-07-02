@@ -68,8 +68,8 @@ Spawn subagents for all implementation and exploration work. Use `[MODEL:coder]`
 
 ## Handoff
 
-1. **[verify commit](../verify-commit/SKILL.md)** — when a test plan exists, follow **[run tests](../testing/run-tests/SKILL.md)** first, then the rest of that skill.
-2. **FAIL** → fix in this loop (or stop on blocker).
-3. **PASS** → [commit skill](../commit/SKILL.md) (**propose**; owner **`y`**).
+1. **Run [phase-summary](../phase-summary/SKILL.md)** — print the deliverables summary and `Ready to prepare commit (y/n):`, then stop.
+2. If owner says **y** → run [verify commit](../verify-commit/SKILL.md) spawned as `[MODEL:verifier]`, then [commit skill](../commit/SKILL.md) (**propose**; owner approves).
+3. If owner says **n** → ask what needs to change before committing.
 
 **run-task-loop** = delivery + task + add-tests + app + run-tests; **verify-commit** = pre-commit gate; **commit** = git.

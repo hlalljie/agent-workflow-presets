@@ -1,0 +1,8 @@
+---
+description: Always run the phase-summary skill before proposing any commit that completes a task loop.
+alwaysApply: true
+---
+
+Before proposing a commit that closes out a task loop or phase, always run the [phase-summary skill](../skills/phase-summary/SKILL.md) first. The summary must be printed in the response before the commit message appears.
+
+Never jump straight to a commit proposal after finishing tasks — the owner must see what was done and how it was tested before approving a commit.
