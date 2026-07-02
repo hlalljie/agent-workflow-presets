@@ -19,7 +19,7 @@ A plan file, and potentially open questions and research docs. **Never code, nev
 2. If the codebase can answer a question, explore it instead of asking the user.
 3. Ask questions to resolve unknowns — one or two at a time, not a wall of questions. Work through the decision tree branch by branch. For each question, provide your recommended answer.
 4. Create open questions for anything that needs research or will block work later.
-5. Do research (invoke [research skill](../research/SKILL.md)) for questions that need it.
+5. For questions that need research, spawn a subagent using `[MODEL:researcher]` following [research skill](../research/SKILL.md).
 6. Write the plan only after enough questions are answered to define phases.
 7. Present to user for review.
 

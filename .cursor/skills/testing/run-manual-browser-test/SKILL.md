@@ -10,7 +10,7 @@ description: >-
 
 ## Job
 
-Execute **one** **`tests/manual/*.md`** checklist **as written**. Does **not** change application code or the checklist file (unless the procedure says to note results elsewhere).
+Always spawn a subagent to execute this skill using `[MODEL:browser-tester]`. When running multiple checklists, spawn one subagent per checklist in parallel. Execute **one** **`tests/manual/*.md`** checklist **as written**. Does **not** change application code or the checklist file (unless the procedure says to note results elsewhere).
 
 ## Before any browser tool call
 

@@ -60,7 +60,7 @@ Do not skip this step; scope and checkboxes live there.
 
 5. **Task checkboxes** — Update **`### Task N`** in the task file when work completes ([workflow.mdc](../../rules/workflow.mdc)).
 
-Subagents (**`Task`**) optional.
+Spawn subagents for all implementation and exploration work. Use `[MODEL:coder]` for implementation tasks. If the user has flagged the task as complex or it has failed repeatedly in the loop, spawn using `[MODEL:complex-coder]` instead. Use `[MODEL:researcher]` for codebase exploration tasks.
 
 ## Constraints
 

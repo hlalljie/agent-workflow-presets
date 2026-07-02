@@ -33,7 +33,7 @@ Execute automated + manual steps **aligned with the test plan** ([add tests](../
 1. **Targeted Vitest** — `npx vitest run <paths…>` for files listed in the plan (fast signal).
 2. **Full Vitest** — **`npm test`** when the slice can affect shared code or you need full regression.
 3. **Feature smoke** — project-specific regression scripts (see **`package.json`**). Run any that cover the areas you touched.
-4. **Manual browser** — each **`tests/manual/*.md`** tied to the plan: [run manual browser test](../run-manual-browser-test/SKILL.md) (Start state, then procedure). For **UI- or shell-related** work, skipping this step is **not** a default win—report **BLOCKED** only when the environment truly prevents it (no server, no browser tool, auth wall).
+4. **Manual browser** — spawn a subagent using `[MODEL:browser-tester]` for each **`tests/manual/*.md`** tied to the plan, following [run manual browser test](../run-manual-browser-test/SKILL.md) (Start state, then procedure). For **UI- or shell-related** work, skipping this step is **not** a default win—report **BLOCKED** only when the environment truly prevents it (no server, no browser tool, auth wall).
 5. **Build** — **`npm run build`** when verifying types/integration.
 
 Add **`npm run lint`** when the change is style/ESLint-sensitive.

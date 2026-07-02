@@ -9,7 +9,7 @@ description: >-
 
 ## Job
 
-Write a **test plan** and **create every artifact** it names — Vitest files, snapshot/integration specs, smoke notes, and **`tests/manual/*.md`** when the change is visible to users. Mark each item **`[x]`** when that artifact exists. [run tests](../run-tests/SKILL.md) *executes* what you listed here; this skill *authors* the plan and the tests.
+Spawn a subagent to execute this skill using `[MODEL:coder]`. Write a **test plan** and **create every artifact** it names — Vitest files, snapshot/integration specs, smoke notes, and **`tests/manual/*.md`** when the change is visible to users. Mark each item **`[x]`** when that artifact exists. [run tests](../run-tests/SKILL.md) *executes* what you listed here; this skill *authors* the plan and the tests.
 
 ## Step 1 — Write the test plan
 

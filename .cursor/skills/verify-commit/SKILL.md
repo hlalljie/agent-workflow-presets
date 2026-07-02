@@ -9,7 +9,7 @@ description: >-
 
 ## Role
 
-**Check only.** Prefer **[run tests](../testing/run-tests/SKILL.md)** when a **test plan** or **`tests/plans/*.md`** exists so command order matches the slice. Otherwise: **`npm test`**, **`npm run build`**, **`npm run test:…`** / **`npm run lint`** from **`package.json`**. **Manual:** [run manual browser test](../testing/run-manual-browser-test/SKILL.md). **Does not** fix code or **`git commit`**.
+Spawn as a subagent using `[MODEL:verifier]`. **Check only.** Prefer **[run tests](../testing/run-tests/SKILL.md)** when a **test plan** or **`tests/plans/*.md`** exists so command order matches the slice. Otherwise: **`npm test`**, **`npm run build`**, **`npm run test:…`** / **`npm run lint`** from **`package.json`**. **Manual:** [run manual browser test](../testing/run-manual-browser-test/SKILL.md). **Does not** fix code or **`git commit`**.
 
 The **invoker** (e.g. [run task loop](../run-task-loop/SKILL.md)) runs [commit skill](../commit/SKILL.md) after **PASS**.
 
@@ -31,7 +31,7 @@ If the diff moved, renamed, or deleted files/exports/types: grep `docs/`, `tests
 
 Light fit-in-repo pass.
 
-- **Layer**, **surface**, **duplication** ([check-shared-before-scoped.mdc](../../rules/check-shared-before-scoped.mdc)), **tests**, **noise**; optional **`Task`** **`explore`** on large diffs.
+- Check for layer violations, surface mismatches, duplication (see [check-shared-before-scoped.mdc](../../rules/check-shared-before-scoped.mdc)), missing tests, and noise. For large diffs, spawn an explore subagent using `[MODEL:researcher]` to scan before reviewing.
 
 ## 4. Report
 

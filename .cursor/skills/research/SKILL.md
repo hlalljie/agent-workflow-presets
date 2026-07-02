@@ -7,7 +7,7 @@ description: Conduct deep research on a topic and produce a concise research doc
 
 ## When to use
 
-Invoked explicitly when a decision needs information gathering. Not every question needs a full research doc — if a quick web search answers it, just answer in chat. Use this skill when the topic is complex, has multiple options to weigh, or will be referenced later.
+Invoked explicitly when a decision needs information gathering. Always spawn a subagent to execute this skill using `[MODEL:researcher]`. Not every question needs a full research doc — if a quick web search answers it, just answer in chat. Use this skill when the topic is complex, has multiple options to weigh, or will be referenced later.
 
 Research produces a standalone reference doc. It does not contain status markers, links to open questions, or links to plans. Other docs link to it; it links to nothing upstream.
 

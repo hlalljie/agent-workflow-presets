@@ -28,6 +28,7 @@ Normative scope for **how many** tasks to touch lives in **`task-scope.mdc`** (`
 - One task at a time. Complete it, commit, and stop for verification before starting the next.
 - Batch: only when `task-scope.mdc` allows it (explicit multiple task numbers in one message, or `batchable: true` on the task file's first line **and** the user asked to batch in that message).
 - When delegating to subagents: the prompt must enforce this cadence. Tell the agent to do one task, commit, and return. Do not tell it to "implement all tasks."
+- Spawn implementation subagents using `[MODEL:coder]`. See `agent-models.mdc` for all role assignments.
 
 ## When a task completes
 

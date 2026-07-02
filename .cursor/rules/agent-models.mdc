@@ -1,0 +1,26 @@
+---
+description: Agent model registry. Defines which model to use per role. Use [MODEL:X] signal to reference a role anywhere delegation occurs.
+alwaysApply: true
+---
+
+## Agent Model Registry
+
+When you see `[MODEL:X]` anywhere in a skill or rule, look up the role `X` below and use that model. Do not guess, substitute, or default to another model.
+
+- **orchestrator**: `claude-4.6-sonnet-medium-thinking`
+- **writer**: `claude-4.6-sonnet-medium-thinking` — planning, instruction writing, drafting
+- **coder**: `composer-2.5-fast` — standard implementation tasks
+- **complex-coder**: `claude-4.6-sonnet-medium-thinking` — tasks the user flags as complex, or after repeated failures in the loop
+- **researcher**: `composer-2.5-fast` — codebase and internet research
+- **browser-tester**: `composer-2.5-fast` — manual browser testing via MCP
+- **verifier**: `claude-4.6-sonnet-medium-thinking` — code quality, architecture review, final checks
+
+## Usage
+
+Reference a role inline wherever you delegate: `[MODEL:coder]`, `[MODEL:verifier]`, etc.
+
+When spawning a subagent, pass the model ID from this registry. If the platform does not honor the model field for your plan type, document the intent and proceed — the registry is still the source of truth for what was intended.
+
+## Updating models
+
+Change the value here only. All skills and rules that use `[MODEL:X]` signals automatically reflect the update.
