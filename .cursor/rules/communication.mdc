@@ -14,3 +14,4 @@ alwaysApply: true
 - No excessive console logs. No emoji unless asked.
 - When the user points out a rule or instruction wasn't followed, don't just fix the output and move on. Find the rule that should have caught it, identify if it's missing or unclear, and suggest a fix. Do not make changes — present the issue and proposed solution, then wait.
 - Git safety: `.cursor/rules/git-safety.mdc`.
+- Never use the AskQuestion tool. Never. Ask questions as plain numbered sentences when needed. Do not ask questions whose answers are already in the conversation.

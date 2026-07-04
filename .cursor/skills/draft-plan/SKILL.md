@@ -13,6 +13,13 @@ Only when the user explicitly asks to create a plan or invokes this skill. Do no
 
 A plan file, and potentially open questions and research docs. **Never code, never create tasks.** Task lists are a separate skill ([create task list](../create-task-list/SKILL.md)) invoked later when the user is ready to work on a phase.
 
+**File locations (always use these):**
+- Plan: `.cursor/plans/<plan-name>/plan.md`
+- Research docs: `.cursor/plans/<plan-name>/research/<topic>.md`
+- Open questions: `.cursor/plans/<plan-name>/open-questions.md`
+- Decisions: `.cursor/plans/<plan-name>/decisions.md`
+- Phase task lists: `.cursor/plans/<plan-name>/<phase>/tasks/tasks.md`
+
 ## Process
 
 1. Read relevant context: codebase, conversation history, existing research, existing open questions.

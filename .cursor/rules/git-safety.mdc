@@ -7,3 +7,7 @@ Never run `git add`, `git commit`, `gh pr create`, or `git push` directly.
 
 If the user wants to commit, follow the [commit skill](../skills/commit/SKILL.md).
 If the user wants a PR, follow the [pr skill](../skills/pr/SKILL.md).
+
+**"go ahead", "do it", "yes", or any approval that comes in the same message as a request to make changes** is approval of the changes only — not approval to commit. Committing always requires a response that refers specifically to the commit proposal (e.g. "y", "yes", "approved", "use that message") — not a general affirmative that could be responding to anything else visible in the conversation.
+
+Never commit as part of a task loop, cleanup, or reorganization step unless the commit skill has been explicitly invoked and the user has approved the proposed message with a response clearly directed at the commit proposal.

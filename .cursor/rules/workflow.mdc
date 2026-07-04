@@ -54,8 +54,8 @@ Record when: open question resolved, user makes a call during conversation, plan
 
 ## General
 
-- **Plan vs tasks:** `plan.md` describes phases only; it does not link to `tasks/*.md`. Task lists link *to* the plan phase they implement. Keeps a single direction of reference and less churn.
-- **Skills for plan artifacts:** New phase-level plans (no code, no task lists): [draft-plan](../skills/draft-plan/SKILL.md). New **`### Task N`** checklists under `.cursor/plans/**/tasks/*.md`: [create-task-list](../skills/create-task-list/SKILL.md).
+- **Plan vs tasks:** `.cursor/plans/<plan-name>/plan.md` describes phases only; it does not link to `tasks/*.md`. Task lists link *to* the plan phase they implement. Keeps a single direction of reference and less churn.
+- **Skills for plan artifacts:** New phase-level plans (no code, no task lists): [draft-plan](../skills/draft-plan/SKILL.md). New **`### Task N`** checklists under `.cursor/plans/<plan-name>/<phase>/tasks/*.md`: [create-task-list](../skills/create-task-list/SKILL.md).
 - Do not duplicate information across docs. Each piece of information lives in one place. Plans link to research; open questions link to research. If you find yourself writing the same thing in two files, pick one and link from the other.
 - No status markers in research docs.
 - Keep working docs concise — split or trim if long.

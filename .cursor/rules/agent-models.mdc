@@ -21,6 +21,18 @@ Reference a role inline wherever you delegate: `[MODEL:coder]`, `[MODEL:verifier
 
 When spawning a subagent, pass the model ID from this registry. If the platform does not honor the model field for your plan type, document the intent and proceed — the registry is still the source of truth for what was intended.
 
+## Delegation policy
+
+The orchestrator coordinates, plans, reviews, and commits. It delegates implementation, research, and testing to the appropriate model above.
+
+**Always spawn subagents when tasks can run in parallel** — even if there is only one task. The orchestrator must not occupy itself with a single implementation task when it could be coordinating.
+
+**Only act directly when both conditions are met:**
+1. Tasks must run sequentially (true dependency — each output feeds the next input)
+2. The current model matches the required model for that task type
+
+If either condition fails, spawn a subagent.
+
 ## Updating models
 
 Change the value here only. All skills and rules that use `[MODEL:X]` signals automatically reflect the update.

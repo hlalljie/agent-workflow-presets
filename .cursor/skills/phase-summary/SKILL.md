@@ -24,7 +24,9 @@ If anything requires human verification, add:
 **Owner check (human):**
 - [ ] Specific thing to open or confirm
 
-Then print: `Ready to prepare commit (y/n):` and stop.
+Then print: `Ready to prepare commit proposal (y/n):` and stop.
+
+If owner says y → run the [commit skill](../commit/SKILL.md), which will propose the message and wait for a second approval before committing.
 
 ## Rules
 

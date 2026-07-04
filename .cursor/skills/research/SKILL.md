@@ -11,6 +11,8 @@ Invoked explicitly when a decision needs information gathering. Always spawn a s
 
 Research produces a standalone reference doc. It does not contain status markers, links to open questions, or links to plans. Other docs link to it; it links to nothing upstream.
 
+**File location:** always write research docs to `.cursor/plans/<plan-name>/research/<topic>.md`.
+
 ## Process
 
 1. Clarify what the user is asking. A research doc can cover multiple related questions if they naturally group together — it is organized around a topic, not rigidly one-question-per-file.
