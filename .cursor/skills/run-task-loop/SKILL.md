@@ -68,7 +68,7 @@ Spawn subagents for all implementation and exploration work. Use `[MODEL:coder]`
 
 ## Handoff
 
-1. **Run [phase-summary](../phase-summary/SKILL.md)** — print the deliverables summary and `Ready to prepare commit (y/n):`, then stop.
+1. **READ and follow [phase-summary](../phase-summary/SKILL.md)** — open the skill file, use its exact output format, then stop. Do not infer the format from memory.
 2. If owner says **y** → run [verify commit](../verify-commit/SKILL.md) spawned as `[MODEL:verifier]`, then [commit skill](../commit/SKILL.md) (**propose**; owner approves).
 3. If owner says **n** → ask what needs to change before committing.
 
