@@ -22,6 +22,7 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 
 - **`communication.mdc`** — answer before code, address all points, one change-set at a time
 - **`task-scope.mdc`** — one plan task per message by default; no scope creep
+- **`workflow-mode.mdc`** — keeps the active workflow mode (careful, pair, afk) across long chats
 - **`workflow.mdc`** — open questions, decisions, plan format conventions
 - **`engineering-standards.mdc`** — show options, security defaults, think through failure modes
 - **`dependency-safety.mdc`** — research before proposing, approval gate before install
@@ -43,7 +44,7 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 - **`pr`** — propose + approve flow for pull requests
 - **`draft-plan`** — create phase-level project plans
 - **`create-task-list`** — break a plan phase into concrete tasks
-- **`run-task-loop`** — drive a task to completion end-to-end
+- **`run-task-loop`** — drive a task to completion end-to-end; modes `careful`, `pair`, `afk` change how (see `workflow-mode.mdc`)
 - **`research`** — deep research producing a standalone reference doc
 - **`verify-commit`** — pre-commit gate: tests, build, docs freshness, scoped review
 - **`testing/add-tests`** — write a test plan and create all test artifacts

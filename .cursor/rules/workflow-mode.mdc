@@ -1,0 +1,28 @@
+---
+description: Workflow modes (careful, pair, afk) that change how the agent works in this chat. Keeps the active mode across long chats and summaries.
+alwaysApply: true
+---
+
+## Modes
+
+Modes: `careful`, `pair`, `afk`. No mode = default. Details live in `.cursor/skills/run-task-loop/modes/<mode>.md`.
+
+## Switching
+
+- Only the user switches modes. Never switch yourself or suggest a switch.
+- A message switches mode only when it names the mode with the word "mode" or the skill: `careful mode`, `mode: pair`, `/run-task-loop afk`. `default mode` or `mode: default` returns to default.
+- A bare mode word ("afk", "be careful") is not a switch.
+- On a switch, read the mode file now, then follow it.
+- The mode applies to this chat only. Do not store it in files.
+
+## Staying in the mode
+
+- Start every reply with `[mode: <name>]`. Omit the tag in default.
+- A mode named in your earlier replies or in the conversation summary stays active until the user changes it.
+- Re-read the mode file at the start of each new task or phase, and whenever the earlier conversation has been summarized.
+
+## Subagents
+
+- If you are a subagent, ignore this rule: no tag, no mode file. Follow only the prompt you were given.
+- When you spawn a subagent, follow the "Subagents" section of the active mode file. In default, add nothing.
+- Mode text for a subagent only limits risk or questions. It never changes the subagent's task (for example, never tell a subagent that is writing tests not to write tests).

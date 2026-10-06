@@ -5,6 +5,7 @@ description: >-
   application code, run-tests, validate, verify-commit.
   Skills chain via cross-links by design; flatten later if navigation hurts.
   Owner sees blockers or finished work—not perpetual oversight.
+  Modes: careful, pair, afk (see Modes); no mode = default.
 ---
 
 # Run task loop
@@ -12,6 +13,15 @@ description: >-
 ## Goal
 
 Finish the work with **strong coverage**, without owner involvement until **done**, **blocked**, or **out of credible fixes**.
+
+## Modes
+
+The active mode is set by the user and tracked by [workflow-mode.mdc](../../rules/workflow-mode.mdc). Read the mode file and follow it; where it conflicts with this file, the mode file wins.
+
+- **default** (no mode): this file as written. Interrupt only for **Stop only for** items. Test moderately: follow [run tests](../testing/run-tests/SKILL.md), full suite only when shared code is touched. Validate before handing off.
+- **[careful](modes/careful.md):** ask immediately, small verified steps, approval before touching real data.
+- **[pair](modes/pair.md):** fast high-volume edits with an edit log and light checks while the user reviews live.
+- **[afk](modes/afk.md):** ask everything up front, then run unattended until done or blocked.
 
 **Doc shape:** This skill points at other skills (add-tests, run-tests, verify-commit) instead of inlining every instruction—**modular by choice**; if that becomes hard to follow, a future option is one consolidated runbook.
 
