@@ -51,12 +51,14 @@ Subject length: **~50 chars is a soft target**; clarity beats padding or crammin
 
 When the commit finishes a plan phase, add a bullet (e.g. `Completes Phase 2`). Omit that bullet otherwise.
 
-Get the conversation UUID:
+The UUID links the commit to the chat where it was made. Use this chat's own ID: it is the folder name of **"Current agent's store"** in the session info, and it matches a transcript at `~/.cursor/projects/<project>/agent-transcripts/<uuid>/<uuid>.jsonl`.
+
+If the ID is not in the session info, take the most recently written transcript for **this project** (run from the repo root):
 ```bash
-ls -t ~/.cursor/projects/*/agent-transcripts/ | head -1
+ls -t ~/.cursor/projects/$(pwd | sed 's|^/||; s|/|-|g')/agent-transcripts/*/*.jsonl | head -1
 ```
 
-Note: the path above may need adjusting per project. The UUID links the commit to the chat where it was made.
+The UUID is the folder name before the file. If another chat in the same project was active recently, confirm the transcript mentions this conversation before using it. Never leave the placeholder in a commit message.
 
 ## After committing
 

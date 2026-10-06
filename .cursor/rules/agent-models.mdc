@@ -1,38 +1,16 @@
 ---
-description: Agent model registry. Defines which model to use per role. Use [MODEL:X] signal to reference a role anywhere delegation occurs.
+description: Which model subagents use. Default is the parent's model; the user's most recent instruction overrides it.
 alwaysApply: true
 ---
 
-## Agent Model Registry
+## Subagent models
 
-When you see `[MODEL:X]` anywhere in a skill or rule, look up the role `X` below and use that model. Do not guess, substitute, or default to another model.
+- **Default: inherit.** Every subagent uses the same model as the parent chat. Pass `inherit` (or omit the model) on every spawn, for every subagent type. Never choose another model yourself, even for "cheap" or "fast" work like research, exploration, or browser tests.
+- **User override.** If the user names a model for subagents, use exactly that model on every spawn until they say otherwise.
+- **Reset.** If the user says to switch back, use the default, or use the same model as this chat, the override ends and subagents inherit again.
+- **Before each spawn,** find the most recent model instruction in the conversation and follow it. If there is none, inherit.
+- **Unavailable model.** If the requested model is not one you can use for subagents, do not substitute. Skip the spawn, say which model was unavailable, and list the available ones.
 
-- **orchestrator**: `claude-4.6-sonnet-medium-thinking`
-- **writer**: `claude-4.6-sonnet-medium-thinking` — planning, instruction writing, drafting
-- **coder**: `composer-2.5-fast` — standard implementation tasks
-- **complex-coder**: `claude-4.6-sonnet-medium-thinking` — tasks the user flags as complex, or after repeated failures in the loop
-- **researcher**: `composer-2.5-fast` — codebase and internet research
-- **browser-tester**: `composer-2.5-fast` — manual browser testing via MCP
-- **verifier**: `claude-4.6-sonnet-medium-thinking` — code quality, architecture review, final checks
+## Delegation
 
-## Usage
-
-Reference a role inline wherever you delegate: `[MODEL:coder]`, `[MODEL:verifier]`, etc.
-
-When spawning a subagent, pass the model ID from this registry. If the platform does not honor the model field for your plan type, document the intent and proceed — the registry is still the source of truth for what was intended.
-
-## Delegation policy
-
-The orchestrator coordinates, plans, reviews, and commits. It delegates implementation, research, and testing to the appropriate model above.
-
-**Always spawn subagents when tasks can run in parallel** — even if there is only one task. The orchestrator must not occupy itself with a single implementation task when it could be coordinating.
-
-**Only act directly when both conditions are met:**
-1. Tasks must run sequentially (true dependency — each output feeds the next input)
-2. The current model matches the required model for that task type
-
-If either condition fails, spawn a subagent.
-
-## Updating models
-
-Change the value here only. All skills and rules that use `[MODEL:X]` signals automatically reflect the update.
+Spawn subagents for work that can run in parallel or that a skill says to delegate. Skills do not choose models; only this rule does.

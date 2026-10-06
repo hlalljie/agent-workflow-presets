@@ -25,10 +25,10 @@ Research is standalone. It does not contain status markers, links to open questi
 
 Normative scope for **how many** tasks to touch lives in **`task-scope.mdc`** (`alwaysApply: true`). This section is the plan-format companion.
 
-- One task at a time. Complete it, commit, and stop for verification before starting the next.
+- One task at a time. Complete it and stop for verification before starting the next. Commits only via the commit skill, with owner approval (`git-safety.mdc`).
 - Batch: only when `task-scope.mdc` allows it (explicit multiple task numbers in one message, or `batchable: true` on the task file's first line **and** the user asked to batch in that message).
-- When delegating to subagents: the prompt must enforce this cadence. Tell the agent to do one task, commit, and return. Do not tell it to "implement all tasks."
-- Spawn implementation subagents using `[MODEL:coder]`. See `agent-models.mdc` for all role assignments.
+- When delegating to subagents: the prompt must enforce this cadence. Tell the agent to do one task and return, without committing. Do not tell it to "implement all tasks."
+- Subagent models follow `agent-models.mdc`.
 
 ## When a task completes
 
