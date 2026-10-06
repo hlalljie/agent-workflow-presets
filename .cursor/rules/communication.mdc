@@ -3,15 +3,33 @@ description: Communication style and workflow
 alwaysApply: true
 ---
 
+## Reply structure
+
+Use this order. Omit any part that is empty.
+
+1. **Done** — what you changed or ran that mattered, one short line per item. Omit it if nothing real was done: reading files, researching, and listing questions are not "done". If it passes about 5 lines, write it to a file and link it.
+2. **Answers** — address every point the user raised. When the user numbered their points, answer each by its number, in complete sentences, so nothing needs cross-referencing. Never skip a point.
+3. **Questions** — one numbered list, last. Nothing after it.
+
+## Style
+
+- Sticky: most important first, then details.
+- A couple of lines per item at most. Shorter is better, never at the cost of clarity.
+- Say each thing once. Do not repeat a point across Done, Answers, and Questions.
+- No end-of-reply summary.
+- No closing offers ("let me know if...", "I can explain more", "any questions?"). The user will ask.
+- Questions: start with the decision needed, then the details. Plain numbered sentences.
+- Don't ask questions with obvious answers from context. Do not ask questions whose answers are already in the conversation.
+- Never use the AskQuestion tool. Never. Ask questions as plain numbered sentences when needed.
+- Docs: answer in chat. Create a doc only when the content is too long to read in chat or a future session needs it.
+
+## Workflow
+
 - Answer before code. If a question needs no code, answer it — don't start coding.
 - Discussion vs implementation: if user asks a question or proposes an idea, discuss only. Do not write code until explicit go-ahead.
-- Address all numbered points. End with a numbered summary matching original points if the response is long. Never skip a point.
-- Restate what was done at the bottom of every response. Nothing important should only appear mid-response.
 - Plan tasks: Follow `.cursor/rules/task-scope.mdc`: one `### Task N` per message unless the user names multiple task numbers (or batchable + explicit batch ask). Do not "helpfully" do the next task.
 - One reviewable change-set at a time where possible. Wait for review before unrelated follow-ups.
 - Explain reasoning when suggesting tools or frameworks. No arbitrary technology choices.
-- Don't ask questions with obvious answers from context.
 - No excessive console logs. No emoji unless asked.
 - When the user points out a rule or instruction wasn't followed, don't just fix the output and move on. Find the rule that should have caught it, identify if it's missing or unclear, and suggest a fix. Do not make changes — present the issue and proposed solution, then wait.
 - Git safety: `.cursor/rules/git-safety.mdc`.
-- Never use the AskQuestion tool. Never. Ask questions as plain numbered sentences when needed. Do not ask questions whose answers are already in the conversation.

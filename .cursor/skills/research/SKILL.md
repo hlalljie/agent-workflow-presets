@@ -1,6 +1,6 @@
 ---
 name: research
-description: Conduct deep research on a topic and produce a concise research doc. Use when the user asks to research, investigate, or compare options. Invoked explicitly, not automatically.
+description: Conduct deep research on a topic and report findings, writing a research doc only when the findings are long or must be kept for later sessions. Use when the user asks to research, investigate, or compare options. Invoked explicitly, not automatically.
 ---
 
 # Research
@@ -9,9 +9,18 @@ description: Conduct deep research on a topic and produce a concise research doc
 
 Invoked explicitly when a decision needs information gathering. Always spawn a subagent to execute this skill. Not every question needs a full research doc — if a quick web search answers it, just answer in chat. Use this skill when the topic is complex, has multiple options to weigh, or will be referenced later.
 
-Research produces a standalone reference doc. It does not contain status markers, links to open questions, or links to plans. Other docs link to it; it links to nothing upstream.
+## Doc or chat
 
-**File location:** always write research docs to `.cursor/plans/<plan-name>/research/<topic>.md`.
+**Default: report the findings in chat and write no file.** Write a doc only when one of these is true:
+
+- The findings need a lot of reading, so a chat reply would be too long.
+- A future session needs them recorded.
+
+If unsure, answer in chat. Everything below about the doc applies only when one is written.
+
+A research doc is standalone. It does not contain status markers, links to open questions, or links to plans. Other docs link to it; it links to nothing upstream.
+
+**File location:** `.cursor/plans/<plan-name>/research/<topic>.md`.
 
 ## Process
 
@@ -19,7 +28,7 @@ Research produces a standalone reference doc. It does not contain status markers
 2. Search broadly (multiple queries, different angles).
 3. Fetch and read promising sources before citing them. If a source looks relevant but cannot be read (paywall, video, etc.), move on unless nothing else covers that ground — then link it with a note.
 4. Discard junk. A source earns its place by directly informing the user's question. Do not pad with tangentially related links.
-5. Write the doc.
+5. If a doc is warranted (see Doc or chat), write it.
 6. Tell the user what you found.
 
 ## Search strategy
