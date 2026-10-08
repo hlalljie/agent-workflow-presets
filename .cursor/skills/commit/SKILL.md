@@ -11,7 +11,7 @@ description: Prepare and propose a commit. Use when the user asks to commit, pre
 2. **Security review** — no secrets, credentials, or env files staged; sensitive paths ignored.
 3. **Loose ends** — only if something needs a follow-up. If there are none, **omit** this (do not write "none", do not explain what you are not doing).
 3b. **Upgrade notes** — only if `UPGRADING.md` exists at the repo root and the change touches harness files it names: follow its "How this file works" section and include the proposed entry (or "no entry needed") and the file in the proposal. Skip silently in any other repo.
-4. **Propose** — commit message, files to stage, `Ready to commit (y/n):`, **stop**. Do not run `git add` or `git commit`.
+4. **Propose** — commit message, files to stage, `Ready to commit (y/n):`, **stop**. Before printing, check the subject matches `type(scope)?!?: subject` (see "Commit message format"); fix it if not. Do not run `git add` or `git commit`.
 5. Wait for explicit approval.
 6. Only then run `git add` and `git commit`.
 
@@ -27,7 +27,15 @@ This applies no matter how the user phrases it — "commit this", "create a comm
 
 ## Commit message format
 
-**Subject:** State **what changed for the user or product** (outcome / intent), not a dump of file moves. Someone reading only the subject should understand the change **without** opening the diff.
+**Prefix:** Subjects follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/): `type(scope): subject`.
+
+- **Type** (required, lowercase): `feat` (new capability), `fix` (bug fix), `docs` (documentation only), `refactor` (no behavior change), `perf`, `test`, `build`, `ci`, `chore` (maintenance), `revert`. Pick the one that matches the main change.
+- **Scope** (optional, a short noun for the area touched): include it when it helps, omit it when it adds nothing. Never required.
+- **Breaking change:** add `!` before the colon (`feat(api)!: ...`) and a `BREAKING CHANGE: <what breaks>` footer.
+- For harness files (rules, skills, harness docs), use the scope `harness`: `feat(harness):` or `fix(harness):` for behavior changes, `docs(harness):` for docs only.
+- The type and scope are not a substitute for the outcome statement below; the text after the colon still states the outcome.
+
+**Subject:** After the prefix, state **what changed for the user or product** (outcome / intent), not a dump of file moves. Someone reading only the subject should understand the change **without** opening the diff.
 
 - Put the **main or motivating change first** (e.g. the feature or bug class readers care about). Secondary work can follow in the same subject (semicolon or second clause) or in the body—not buried as the only mention of a headline item.
 - Do **not** make the subject a list of paths or "add file X" unless the path *is* the whole story.
@@ -40,7 +48,7 @@ This applies no matter how the user phrases it — "commit this", "create a comm
 - Implementation-only detail belongs in the body **after** the outcome, and only if it helps the next reader; it must not be the only content of a bullet.
 
 ```
-Short subject describing the outcome
+type(scope): short subject describing the outcome
 
 - What it does or fixes
 - What it does or fixes
@@ -48,9 +56,11 @@ Short subject describing the outcome
 chat: <conversation-uuid>
 ```
 
-Subject length: **~50 chars is a soft target**; clarity beats padding or cramming unrelated edits into one vague line.
+Subject length: **~50 chars is a soft target** (the prefix counts); clarity beats padding or cramming unrelated edits into one vague line.
 
 When the commit finishes a plan phase, add a bullet (e.g. `Completes Phase 2`). Omit that bullet otherwise.
+
+When the work was done for a specific issue and this commit completes it, add `Closes #<number>` as the last bullet of the body, before the `chat:` line. Only add it when the issue is actually resolved by this commit; omit it for partial work or when no issue is involved.
 
 The UUID links the commit to the chat where it was made. Use this chat's own ID: it is the folder name of **"Current agent's store"** in the session info, and it matches a transcript at `~/.cursor/projects/<project>/agent-transcripts/<uuid>/<uuid>.jsonl`.
 

@@ -13,6 +13,7 @@ What existing projects must do when the harness changes. `/blueprint-apply` show
 
 ## Unreleased
 
+- Commit subjects now use a Conventional Commits prefix (`type(scope): subject`, scope optional, `harness` scope suggested for rules and skills), and commits that complete an issue include `Closes #N`. Action: none; existing history is not rewritten.
 - Harness is now a blueprint part (`parts/workflow/harness`). Action: none for existing projects; run `/blueprint-apply workflow=harness@presets` once to adopt it and start receiving updates.
 
 ## v0.1.0 (baseline)
