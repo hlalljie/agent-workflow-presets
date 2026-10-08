@@ -12,7 +12,9 @@ A portable `.cursor/` setup for agent-assisted development. Drop into any projec
 
 ## Setup for a new project
 
-1. Copy `.cursor/` and `docs/` into your project root.
+1. Copy `.cursor/` and `docs/` into your project root, leaving out `.cursor/skills/blueprint/` (it is installed once per machine, see **Blueprints** below).
+   - macOS / Linux: `rsync -a --exclude 'skills/blueprint' .cursor/ <project>/.cursor/`
+   - Windows: `robocopy .cursor <project>\.cursor /E /XD blueprint`
 2. In that project, ask the agent to run the **`setup` skill** (`.cursor/skills/setup/SKILL.md`). It will walk you through every `<!-- TODO: -->` marker, asking questions and writing the answers back into the right files.
 3. After setup completes, delete `.cursor/skills/setup/` — it's a one-time bootstrap tool.
 
@@ -51,3 +53,23 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 - **`testing/run-tests`** — execute tests in plan order
 - **`testing/write-manual-browser-test`** — author browser checklists
 - **`testing/run-manual-browser-test`** — execute browser checklists with MCP browser
+- **`blueprint/apply`** — scaffold a project from parts (api, database, cache, branding, plan) taken from a catalog or another project; pull later updates
+- **`blueprint/generate`** — save parts from a project into a catalog; list what in a project is worth pushing back
+
+## Blueprints
+
+The blueprint skills are installed once per machine, not copied into projects. They only run when invoked (`/blueprint-apply`, `/blueprint-generate`). Format and workflow are in `.cursor/skills/blueprint/FORMAT.md`.
+
+Install or update (macOS / Linux):
+
+```bash
+mkdir -p ~/.cursor/skills && rsync -a --delete .cursor/skills/blueprint/ ~/.cursor/skills/blueprint/
+```
+
+Install or update (Windows PowerShell):
+
+```powershell
+Copy-Item -Recurse -Force .cursor\skills\blueprint $HOME\.cursor\skills\
+```
+
+Catalogs of saved parts live in separate git repos (one personal, one per client). Register them in `~/.blueprints/sources.md`; the skills create it on first use.

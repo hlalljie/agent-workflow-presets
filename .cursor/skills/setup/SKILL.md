@@ -25,6 +25,10 @@ Before asking anything, read what the project already has:
 
 You need enough context to make informed suggestions when asking the owner fill-in questions. Do not ask things the codebase already answers.
 
+### 1b. Offer blueprints (optional)
+
+If `/blueprint-apply` is installed (user-level, see the README), ask the owner once: scaffold any parts (api, database, cache, branding, plan, and so on) from blueprints or another project? If yes, run `/blueprint-apply` with their scaffold line before the TODO pass, since applied parts can fill some TODOs. If no, or the skill is not installed, skip this step.
+
 ### 2. Find every TODO
 
 Run:
