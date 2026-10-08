@@ -10,6 +10,7 @@ description: Prepare and propose a commit. Use when the user asks to commit, pre
 1. Run `git diff --staged` and `git status` (if nothing staged, note unstaged changes).
 2. **Security review** — no secrets, credentials, or env files staged; sensitive paths ignored.
 3. **Loose ends** — only if something needs a follow-up. If there are none, **omit** this (do not write "none", do not explain what you are not doing).
+3b. **Upgrade notes** — only if `UPGRADING.md` exists at the repo root and the change touches harness files it names: follow its "How this file works" section and include the proposed entry (or "no entry needed") and the file in the proposal. Skip silently in any other repo.
 4. **Propose** — commit message, files to stage, `Ready to commit (y/n):`, **stop**. Do not run `git add` or `git commit`.
 5. Wait for explicit approval.
 6. Only then run `git add` and `git commit`.

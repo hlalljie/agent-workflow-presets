@@ -70,7 +70,8 @@ Things that broke before.
 ```
 
 - **`needs`** — parts that must be present. **`touches`** — env var names, packages, and files the part changes. Apply uses it to find collisions between parts.
-- **Files** is a whitelist. Only listed files are copied or tracked. Everything else in the project is ignored by sync.
+- **Files** is a whitelist. Only listed files are copied or tracked. Everything else in the project is ignored by sync. An entry is `files/<path> -> <target>` (stored inside the part), or `repo:<path> -> <target>` for a file or directory at the catalog's root, so a repo that already holds the files does not duplicate them. A directory covers everything below it. An `Exclude:` line under Files lists paths to skip.
+- **Optional `UPGRADING.md`** at a catalog's root lists what projects must do after changes. Apply shows entries added since the locked commit before it updates anything.
 - **Branding** uses fixed `## Spec` headings so every branding part reads the same: Colors, Type, Shape and spacing, Logo and assets, Voice, Components. It is a spec to translate into the target project's CSS or Tailwind. Nothing is copied.
 
 ## Lock file
@@ -85,7 +86,7 @@ Things that broke before.
 
 Fields: part, source (catalog alias, or `project:<path>`), the source's short commit, date. The commit is the blueprint's version, not the project's, so editing the project never changes this file. Everything else (what changed, what drifted) comes from git history in the source.
 
-Script: `bash scripts/lock.sh set <part> <source> <sha>`, `get <part>`, `list`, `changed <catalog-dir> <part>`. Run it from the project root. `changed` lists files in `parts/<part>` that differ between the locked commit and the catalog's `HEAD`; empty output means unchanged.
+Script: `bash scripts/lock.sh set <part> <source> <sha>`, `get <part>`, `list`, `changed <catalog-dir> <part> [extra-path...]`. Run it from the project root. `changed` lists files in `parts/<part>`, plus any extra catalog paths (pass the part's `repo:` paths), that differ between the locked commit and the catalog's `HEAD`; empty output means unchanged.
 
 ## Where to look when extracting
 
@@ -97,7 +98,7 @@ Script: `bash scripts/lock.sh set <part> <source> <sha>`, `get <part>`, `list`, 
 - `deploy` — platform config files, build and start commands, env var names, CI workflows.
 - `tooling` — lint, format, type check, and test config; scripts; git hooks.
 - `branding` — theme and CSS variables, fonts, logo and asset files, tone of the copy, how components look.
-- `workflow` — an explicit list of `.cursor/` rules, skills, and docs templates. Never `skills/blueprint`, `skills/setup`, or files setup fills in per project.
+- `workflow` — an explicit list of `.cursor/` rules, skills, and docs templates. Never `skills/blueprint` (installed per machine). Files setup fills in, and the setup skill itself, are copied only into a new project and are listed under the part's `Apply`, not tracked.
 - `feature` — the routes, components, and services of one feature, and the data it needs.
 - `plan` — one plan's `plan.md` with project names stripped.
 

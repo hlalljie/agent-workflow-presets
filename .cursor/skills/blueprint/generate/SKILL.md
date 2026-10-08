@@ -33,7 +33,7 @@ Turn what a project already does into catalog parts, and keep those parts curren
 Compare the current project against every part in `.cursor/blueprints.md`, and scan for things worth adding. Show everything unless `focus` narrows it to one type. Output only this, one numbered line each, most important first, at most about 15 lines (then "and N more"):
 
 - **Push** — the project differs from the part inside its whitelist. Suggest updating the part.
-- **Pull** — the part changed upstream since the locked commit (`lock.sh changed`). Suggest `/blueprint-apply`.
+- **Pull** — the part changed upstream since the locked commit (`lock.sh changed`, passing the part's `repo:` paths and ignoring its `Exclude` paths). Suggest `/blueprint-apply`.
 - **Conflict** — both changed. Suggest which side wins.
 - **Maybe add, generic** — something of a known type that no part covers (a new skill or rule, a new theme token, a config file). Looks reusable.
 - **Maybe add, repo-specific** — same, but it names this project's domain, ids, or paths. Probably stays here; listed so nothing is missed.

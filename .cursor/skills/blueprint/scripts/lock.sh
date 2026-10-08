@@ -11,7 +11,7 @@ usage:
   lock.sh set <part> <source> <sha>
   lock.sh get <part>
   lock.sh list
-  lock.sh changed <catalog-dir> <part>
+  lock.sh changed <catalog-dir> <part> [extra-path...]
 EOF
   exit 64
 }
@@ -33,12 +33,13 @@ case "$cmd" in
     if [ ! -f "$LOCK" ]; then
       printf '%s\n' '# Blueprints applied' '' 'Written by the blueprint lock script. Do not edit by hand.' '' > "$LOCK"
     fi
-    line="- $1 | $2 | $3 | $(date +%F)"
+    # ENVIRON, not awk -v: -v would interpret backslashes in Windows paths.
+    export LOCK_KEY="- $1" LOCK_LINE="- $1 | $2 | $3 | $(date +%F)"
     tmp=$(mktemp)
-    awk -F' \\| ' -v key="- $1" -v line="$line" '
-      $1 == key { if (!done) print line; done = 1; next }
+    awk -F' \\| ' '
+      $1 == ENVIRON["LOCK_KEY"] { if (!done) print ENVIRON["LOCK_LINE"]; done = 1; next }
       { print }
-      END { if (!done) print line }
+      END { if (!done) print ENVIRON["LOCK_LINE"] }
     ' "$LOCK" > "$tmp"
     mv "$tmp" "$LOCK"
     ;;
@@ -52,13 +53,13 @@ case "$cmd" in
     [ -f "$LOCK" ] && grep '^- ' "$LOCK" || true
     ;;
   changed)
-    [ $# -eq 2 ] || usage
+    [ $# -ge 2 ] || usage
     sha=$(lookup "$2" 3) || { echo "not in lock: $2" >&2; exit 1; }
     if ! git -C "$1" cat-file -e "$sha^{commit}" 2>/dev/null; then
       echo "commit $sha not found in $1 (git fetch there first)" >&2
       exit 2
     fi
-    git -C "$1" diff --name-status "$sha" HEAD -- "parts/$2"
+    git -C "$1" diff --name-status "$sha" HEAD -- "parts/$2" "${@:3}"
     ;;
   *)
     usage

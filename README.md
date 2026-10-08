@@ -12,7 +12,7 @@ A portable `.cursor/` setup for agent-assisted development. Drop into any projec
 
 ## Setup for a new project
 
-1. Copy `.cursor/` and `docs/` into your project root, leaving out `.cursor/skills/blueprint/` (it is installed once per machine, see **Blueprints** below).
+1. Get the harness into your project root. Preferred, once the blueprint skills are installed (see **Blueprints** below): run `/blueprint-apply workflow=harness@presets`. It copies the rules and skills, adds the setup starting points, and records the version so the project can update later. Manual fallback: copy `.cursor/` and `docs/`, leaving out `.cursor/skills/blueprint/`.
    - macOS / Linux: `rsync -a --exclude 'skills/blueprint' .cursor/ <project>/.cursor/`
    - Windows: `robocopy .cursor <project>\.cursor /E /XD blueprint`
 2. In that project, ask the agent to run the **`setup` skill** (`.cursor/skills/setup/SKILL.md`). It will walk you through every `<!-- TODO: -->` marker, asking questions and writing the answers back into the right files.
@@ -73,3 +73,17 @@ Copy-Item -Recurse -Force .cursor\skills\blueprint $HOME\.cursor\skills\
 ```
 
 Catalogs of saved parts live in separate git repos (one personal, one per client). Register them in `~/.blueprints/sources.md`; the skills create it on first use.
+
+## Updating a project's harness
+
+This repo is itself a catalog: `parts/workflow/harness` lists the rules and skills projects receive. Register it once in `~/.blueprints/sources.md` under Catalogs:
+
+```markdown
+- presets: ~/Projects/workflow/agent-workflow-presets | https://github.com/hlalljie/agent-workflow-presets.git
+```
+
+Then in any project run `/blueprint-apply workflow=harness@presets` (or `/blueprint-apply` to update every locked part). It shows what [`UPGRADING.md`](UPGRADING.md) says since the project's last update, then suggests per-file changes and conflicts. Projects copied by hand are adopted the same way, with a two-way compare.
+
+## Versioning
+
+Releases are git tags (`v0.1.0`) on this repo. Every harness change adds an `UPGRADING.md` entry when projects need to act; the commit skill prompts for it. Projects track a commit, not a version number.

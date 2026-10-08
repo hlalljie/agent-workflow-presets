@@ -27,7 +27,7 @@ You need enough context to make informed suggestions when asking the owner fill-
 
 ### 1b. Offer blueprints (optional)
 
-If `/blueprint-apply` is installed (user-level, see the README), ask the owner once: scaffold any parts (api, database, cache, branding, plan, and so on) from blueprints or another project? If yes, run `/blueprint-apply` with their scaffold line before the TODO pass, since applied parts can fill some TODOs. If no, or the skill is not installed, skip this step.
+If `~/.cursor/skills/blueprint/apply/SKILL.md` exists (installed per machine, see the README), ask the owner once: scaffold any parts (api, database, cache, branding, plan, and so on) from blueprints or another project? If yes, read that file and follow it with their scaffold line before the TODO pass, since applied parts can fill some TODOs. The skill is slash-only, so you cannot invoke it by name; read the file instead. If no, or the file is missing, skip this step.
 
 ### 2. Find every TODO
 
