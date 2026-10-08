@@ -13,6 +13,7 @@ What existing projects must do when the harness changes. `/blueprint-apply` show
 
 ## Unreleased
 
+- New `catch-me-up` skill summarizes where you left off, mainly from recent chats, backed by commits, plans, and tasks. Action: none; it arrives with the next `/blueprint-apply workflow=harness@presets`.
 - Commit subjects now use a Conventional Commits prefix (`type(scope): subject`, scope optional, `harness` scope suggested for rules and skills), and commits that complete an issue include `Closes #N`. Action: none; existing history is not rewritten.
 - Harness is now a blueprint part (`parts/workflow/harness`). Action: none for existing projects; run `/blueprint-apply workflow=harness@presets` once to adopt it and start receiving updates.
 

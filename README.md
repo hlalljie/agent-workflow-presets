@@ -47,6 +47,7 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 - **`draft-plan`** — create phase-level project plans
 - **`create-task-list`** — break a plan phase into concrete tasks
 - **`run-task-loop`** — drive a task to completion end-to-end; modes `careful`, `pair`, `afk` change how (see `workflow-mode.mdc`)
+- **`catch-me-up`** — short summary of where you left off, mainly from recent chats, backed by commits, plans, and tasks; read-only
 - **`research`** — deep research producing a standalone reference doc
 - **`verify-commit`** — pre-commit gate: tests, build, docs freshness, scoped review
 - **`testing/add-tests`** — write a test plan and create all test artifacts
