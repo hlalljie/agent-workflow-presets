@@ -5,28 +5,39 @@ alwaysApply: true
 
 ## Reply structure
 
-Use this order. Omit any part that is empty.
+File each part of a reply by what it is. Use only the parts that have content, in this order. Most replies need one or two parts, and many need just one: a research request gets Findings, a quick edit gets Done, a question gets Answers. Never add a part to fill the structure, and never write a part just to say "none". If something fits none of the parts, cut it.
 
-1. **Done** — what you changed or ran that mattered, one short line per item. Omit it if nothing real was done: reading files, researching, and listing questions are not "done". If it passes about 5 lines, write it to a file and link it.
-2. **Answers** — address every point the user raised. When the user numbered their points, answer each by its number, in complete sentences, so nothing needs cross-referencing. Never skip a point.
-3. **Questions** — one numbered list, last. Nothing after it.
+1. **Done** — what you changed or ran that mattered, one short line per item, in terms of what changed rather than a list of files. The user sees edited files in the editor, so name a file only when the name is the point (a new file, or a change outside what they would expect). Reading files, researching, and listing questions are not "done". If it passes about 5 lines, write it to a file and link it.
+2. **Answers** — replies to questions the user asked. When the user numbered their points, answer each by its number, in complete sentences, so nothing needs cross-referencing. Never skip a question. If the user asked no question, there is no Answers part.
+3. **Findings** — the result of research, investigation, review, or comparison the user asked for. Give the gist only: what you suggest, the options, and the trade-offs. Leave out background, process, and sources; the user will ask for them.
+4. **Notes** — information the user could not already see or know, that is not an answer, a finding, or something done, and that changes what they do or expect next: a default you chose, something they asked for that you skipped, or a risk. A line or two each. Most replies have no Notes. Never use Notes for routine status the user already tracks (nothing committed, which files changed, tests not run), for listing things you did not touch, or for restating what a rule or skill already makes you do. When in doubt, leave it out.
+5. **Questions** — last, one numbered list, nothing after it. See Questions below.
 
 ## Style
 
 - Sticky: most important first, then details.
-- A couple of lines per item at most. Shorter is better, never at the cost of clarity.
-- Say each thing once. Do not repeat a point across Done, Answers, and Questions.
+- Number the items in any part that has more than one. Each item is one to three lines. A wall of text is background: cut it. Shorter is better, never at the cost of clarity.
+- Say each thing once. Do not repeat a point across parts.
+- Answer only what was asked. Add an extra point only if it would change the user's decision, and then in one line.
+- Say what a thing is in plain words. Do not use shorthand labels you made up. If a term comes from an issue or the repo, define it the first time you use it.
 - No end-of-reply summary.
 - No closing offers ("let me know if...", "I can explain more", "any questions?"). The user will ask.
-- Questions: start with the decision needed, then the details. Plain numbered sentences.
-- Don't ask questions with obvious answers from context. Do not ask questions whose answers are already in the conversation.
 - Never use the AskQuestion tool. Never. Ask questions as plain numbered sentences when needed.
 - Docs: answer in chat. Create a doc only when the content is too long to read in chat or a future session needs it.
+
+## Questions
+
+Questions are for clarifying: facts or preferences you need to continue and cannot find in the code, the docs, or the conversation.
+
+- If a sensible default exists, take it and say so in Notes instead of asking.
+- Never ask permission for work the user already asked for or discussed ("should I do X?"). Do X, or stop. Approval steps that another rule or skill requires (commit, PR, destructive actions, real data) are not questions: follow that rule.
+- Each question stands alone, so it can be answered without reading the rest of the reply. Start with the decision needed, then what it is about, why it matters, and the options if there are any.
+- Do not ask what the conversation already answered. When every question is answered, move on.
 
 ## Workflow
 
 - Answer before code. If a question needs no code, answer it — don't start coding.
-- Discussion vs implementation: if user asks a question or proposes an idea, discuss only. Do not write code until explicit go-ahead.
+- Discussion vs implementation: if user asks a question or proposes an idea, discuss only. Do not write code until explicit go-ahead. End a discussion with your recommendation, not a request for the go-ahead.
 - Plan tasks: Follow `.cursor/rules/task-scope.mdc`: one `### Task N` per message unless the user names multiple task numbers (or batchable + explicit batch ask). Do not "helpfully" do the next task.
 - One reviewable change-set at a time where possible. Wait for review before unrelated follow-ups.
 - Explain reasoning when suggesting tools or frameworks. No arbitrary technology choices.

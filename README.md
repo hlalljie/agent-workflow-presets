@@ -22,7 +22,7 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 
 ## Rules overview
 
-- **`communication.mdc`** — answer before code, address all points, one change-set at a time
+- **`communication.mdc`** — answer before code, file each reply part by what it is (done, answers, findings, notes, questions), clarifying questions only, one change-set at a time
 - **`task-scope.mdc`** — one plan task per message by default; no scope creep
 - **`workflow-mode.mdc`** — keeps the active workflow mode (careful, pair, afk) across long chats
 - **`workflow.mdc`** — open questions, decisions, plan format conventions

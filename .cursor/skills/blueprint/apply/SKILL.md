@@ -49,7 +49,7 @@ A scaffold line (or plain words naming the same things), for example `database=p
 ## Reply
 
 - **Done**: one line per part applied, updated, or refreshed.
-- **Answers**: what was skipped or translated, one line each.
+- **Notes**: what was skipped or translated, one line each.
 - **Questions**: collisions, dependencies awaiting approval, and anything unclear, as one numbered list at the end.
 
 Update lists look like this:
