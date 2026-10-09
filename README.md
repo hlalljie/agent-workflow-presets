@@ -87,8 +87,8 @@ This repo is itself a catalog: `parts/workflow/harness` lists the rules and skil
 - presets: ~/Projects/workflow/agent-workflow-presets | https://github.com/hlalljie/agent-workflow-presets.git
 ```
 
-Then in any project run `/blueprint-apply workflow=harness@presets` (or `/blueprint-apply` to update every locked part). It shows what [`UPGRADING.md`](UPGRADING.md) says since the project's last update, then suggests per-file changes and conflicts. Projects copied by hand are adopted the same way, with a two-way compare.
+Then in any project run `/blueprint-apply workflow=harness@presets` (or `/blueprint-apply` to update every locked part). It shows what [`UPGRADING.md`](UPGRADING.md) says and the commit subjects since the project's last update, then suggests per-file changes and conflicts. Projects copied by hand are adopted the same way, with a two-way compare.
 
 ## Versioning
 
-Releases are git tags (`v0.1.0`) on this repo. Every harness change adds an `UPGRADING.md` entry when projects need to act; the commit skill prompts for it. Projects track a commit, not a version number.
+Releases are git tags (`v0.1.0`) on this repo. A harness change adds an `UPGRADING.md` entry only when projects must do something by hand; the commit skill prompts for it. Projects track a commit, not a version number.

@@ -1,27 +1,25 @@
 # Upgrading
 
-What existing projects must do when the harness changes. `/blueprint-apply` shows the entries added since a project's locked commit before it updates anything.
+What existing projects must do by hand when the harness changes. `/blueprint-apply` shows the entries added since a project's locked commit, then the commit subjects since then, before it updates anything.
 
 ## How this file works
 
-- Add an entry under **Unreleased** in the same commit that changes harness files (`.cursor/rules/`, `.cursor/skills/`, `docs/`).
-- Write an entry only when a project must act or behavior visibly changes: a rename, a removed file, a new rule that needs project input, a changed workflow. Wording tweaks and internal fixes need none.
-- Changes under `.cursor/skills/blueprint/` are not delivered to projects. If one needs the machine's copy refreshed, say so in the entry and point at the install command in the README.
-- Format: `- <what changed>. Action: <what a project does, or "none">.`
+- Add an entry under **Unreleased** in the same commit that changes harness files (`.cursor/rules/`, `.cursor/skills/`, `docs/`), and only when a project must do or decide something that `/blueprint-apply` cannot do for it:
+  - edit a project-owned file, since apply never overwrites those (`repository-layout.mdc`, `nextjs.mdc`, `docs/folder-structure.md`)
+  - handle a file that was removed or renamed and may still be referenced
+  - opt out of behavior that now acts on its own
+  - refresh the machine's copy of the blueprint skills, since changes under `.cursor/skills/blueprint/` are not delivered to projects (point at the install command in the README)
+- No entry for new skills, new rules, or wording changes. Apply lists the commit subjects, and git history has the rest. Never write an entry whose action is "none".
+- Format: `- <what changed>. Action: <what a project does>.`
 - To release: rename **Unreleased** to `v<major>.<minor>.<patch> (YYYY-MM-DD)`, add a new empty **Unreleased** above it, commit, then tag that commit `v<major>.<minor>.<patch>`. Bump major for breaking changes, minor for new rules or skills, patch otherwise.
 - Projects do not track versions. They track a commit in `.cursor/blueprints.md`, and the tags are for people.
 
 ## Unreleased
 
-- New always-on rule `documentation.mdc` fixes where each kind of doc lives (`README.md`, `docs/folder-structure.md`, `docs/decisions.md`, `docs/architecture.md`, `docs/runbooks/`, `.env.example`), and the new `write-docs` skill holds the checklist and templates. `docs/folder-structure.md` is now the one list of a project's docs. `run-task-loop` updates docs itself after any task that changes something a doc covers (it no longer skips logic-only changes), `verify-commit` adds a **Docs to update** line without failing, and `archive-plan` files architecture information into `docs/architecture.md`. `code-documentation.mdc` adds TSDoc style, `TODO(#123)` pointing at issues instead of tasks, and bans narrating comments. Action: if `repository-layout.mdc` lists domain docs, move that list into a `docs/` section of `docs/folder-structure.md` (project-owned files are never overwritten, so this is by hand); the rest arrives with the next `/blueprint-apply workflow=harness@presets`.
-- Replies are now filed by what each part is: Done, Answers (only when the user asked a question), Findings (the gist of research: suggestion, options, trade-offs), Notes (rare: information the user could not already see that changes what they do next), and Questions. Most replies use only one or two parts. Questions are for clarifying only, not for asking permission to do requested work, and every item is one to three lines. Action: none unless the project edited `communication.mdc`; then `/blueprint-apply` shows a conflict to merge.
-- Plan `decisions.md` entries are now numbered (`N.`, permanent), and decisions that outlive their plan get a one-line entry in a new `docs/decisions.md` that points back with `(plan-name/D3)`. Agents create the file on first use, `archive-plan` adds any that were missed, and `draft-plan` and `run-task-loop` read it. `archive-plan` also checks the plan for architecture information that is not documented yet, confirms it is still current against the code and later decisions, and adds it to existing docs. Action: none; it arrives with the next `/blueprint-apply workflow=harness@presets`. Unnumbered `decisions.md` files are numbered the first time they are edited.
-- New `plan-issues` skill creates GitHub issues for a plan or its phases and links them in an `Issues:` line in the plan or under a phase heading. `run-task-loop` now runs it by itself, without asking, before starting a phase when neither the phase nor the plan has an `Issues:` line (a line under the plan title covers every phase, so a plan that is one issue gets one; skipped when the repo has no GitHub remote or `gh` is not signed in; `careful` mode still asks first). Commits now use `Refs #N` for partial work on an issue as well as `Closes #N`. Action: this writes to GitHub on its own, so for plans or projects that should not create issues, add `Issues: none` under the plan title. The skill arrives with the next `/blueprint-apply workflow=harness@presets`. Sub-issues need `gh` 2.94.0 or later.
-- Completed plan phases now get a `Completed: YYYY-MM-DD` line under the heading, and archiving a plan adds the hash of the commit that finished each phase. Action: none; it arrives with the next `/blueprint-apply workflow=harness@presets`. Phases completed earlier have no date line; add one by hand if you want it.
-- New `archive-plan` skill moves a finished plan from `.cursor/plans/` to `.cursor/plans-archive/`, and the commit skill triggers it after a plan's last phase. Phase headings now end with ` — complete` when done, agents check the archive when a plan path is missing, and nothing outside `.cursor/plans/` should link to a plan. Action: none; it arrives with the next `/blueprint-apply workflow=harness@presets`. To archive plans you already finished, run `mv .cursor/plans/<name> .cursor/plans-archive/<name>` and fix any links into them.
-- New `catch-me-up` skill summarizes where you left off, mainly from recent chats, backed by commits, plans, and tasks. Action: none; it arrives with the next `/blueprint-apply workflow=harness@presets`.
-- Commit subjects now use a Conventional Commits prefix (`type(scope): subject`, scope optional, `harness` scope suggested for rules and skills), and commits that complete an issue include `Closes #N`. Action: none; existing history is not rewritten.
-- Harness is now a blueprint part (`parts/workflow/harness`). Action: none for existing projects; run `/blueprint-apply workflow=harness@presets` once to adopt it and start receiving updates.
+- `/blueprint-apply` now lists the catalog's commit subjects since a project's last update, after the entries here. Action: refresh the installed blueprint skills (install command in the README).
+- `docs/folder-structure.md` is now the one list of a project's docs (new `documentation.mdc` rule). Action: if `repository-layout.mdc` lists domain docs, move that list into a `docs/` section of `docs/folder-structure.md`.
+- `run-task-loop` now creates GitHub issues on its own before starting a phase that has no `Issues:` line (new `plan-issues` skill). Action: add `Issues: none` under the plan title of any plan, or in any project, that should not create issues.
+- Harness is now a blueprint part (`parts/workflow/harness`). Action: run `/blueprint-apply workflow=harness@presets` once to adopt it and start receiving updates.
 
 ## v0.1.0 (baseline)
 

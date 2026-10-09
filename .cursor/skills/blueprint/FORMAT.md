@@ -71,7 +71,7 @@ Things that broke before.
 
 - **`needs`** — parts that must be present. **`touches`** — env var names, packages, and files the part changes. Apply uses it to find collisions between parts.
 - **Files** is a whitelist. Only listed files are copied or tracked. Everything else in the project is ignored by sync. An entry is `files/<path> -> <target>` (stored inside the part), or `repo:<path> -> <target>` for a file or directory at the catalog's root, so a repo that already holds the files does not duplicate them. A directory covers everything below it. An `Exclude:` line under Files lists paths to skip.
-- **Optional `UPGRADING.md`** at a catalog's root lists what projects must do after changes. Apply shows entries added since the locked commit before it updates anything.
+- **Optional `UPGRADING.md`** at a catalog's root lists what projects must do by hand after changes. Apply shows entries added since the locked commit, then the commit subjects since then, before it updates anything.
 - **Branding** uses fixed `## Spec` headings so every branding part reads the same: Colors, Type, Shape and spacing, Logo and assets, Voice, Components. It is a spec to translate into the target project's CSS or Tailwind. Nothing is copied.
 
 ## Lock file
