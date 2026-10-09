@@ -19,7 +19,7 @@ No `Issues:` line means not decided yet. `Issues: none` means decided: no issue.
 
 ## Approval
 
-Creating issues runs without asking. The project owner gave standing approval for this, and it covers only creating issues in the current repo, which is the exception to [data-safety.mdc](../../rules/data-safety.mdc) for this skill alone. In `careful` mode, state what will be created and wait for approval, as that mode requires ([careful](../run-task-loop/modes/careful.md)).
+Creating issues, and the standard labels they need, runs without asking. The project owner gave standing approval for this, and it covers only creating issues and those labels in the current repo, which is the exception to [data-safety.mdc](../../rules/data-safety.mdc) for this skill alone. In `careful` mode, state what will be created and wait for approval, as that mode requires ([careful](../run-task-loop/modes/careful.md)).
 
 ## When to use
 
@@ -37,7 +37,7 @@ Creating issues runs without asking. The project owner gave standing approval fo
 4. **Draft each issue.**
    - Title: the outcome of the phase or plan, not "Phase 2".
    - Body: one or two sentences on why (the plan's Overview for a plan-level issue), then the "done when" as a checklist if there is one. Name the plan in plain text. Do not link into `.cursor/plans/`, because plans move when they finish ([workflow.mdc](../../rules/workflow.mdc)).
-5. **Create.** Per issue: `gh issue create --title "<title>" --body-file -` with the body on standard input. It prints the new issue's URL.
+5. **Create.** First follow Setup in [issue-labels](../issue-labels/SKILL.md); it changes nothing when the labels already exist. Then, per issue: `gh issue create --title "<title>" --label "<type>" --body-file -` with the body on standard input, where `<type>` is the type label that fits the work. It prints the new issue's URL.
    - For a parent and sub-issues, `gh issue create --parent <number>` needs gh 2.94.0 or later. Check `gh --version`. If it is older, create the issues without a parent.
 6. **Link.** Add or extend the `Issues:` line in `plan.md` with a markdown link per issue: under the plan title for a plan-level issue, under the phase heading for a phase-level one. The edit stays uncommitted; the [commit skill](../commit/SKILL.md) includes it in the next commit.
 7. **Report** one line per issue: the link and title, plus any possible duplicate. Then continue the task.

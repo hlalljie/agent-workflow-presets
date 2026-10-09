@@ -52,6 +52,7 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 - **`archive-plan`** — move a finished plan from `.cursor/plans/` to `.cursor/plans-archive/` so only active plans remain, or restore one; the commit skill triggers it after a plan's last phase
 - **`plan-issues`** — create GitHub issues for a plan or its phases on its own (`Issues: none` opts out) and link them in the plan with a loose many-to-many mapping
 - **`write-docs`** — decide which docs a change needs and write or update them; templates for architecture and runbooks
+- **`issue-labels`** — the label standard for issues (type: bug, feature, chore, documentation, question; priority: P0-Critical to P3-Low), with a re-runnable setup that only creates missing labels
 - **`research`** — deep research producing a standalone reference doc
 - **`verify-commit`** — pre-commit gate: tests, build, docs freshness, scoped review
 - **`testing/add-tests`** — write a test plan and create all test artifacts
