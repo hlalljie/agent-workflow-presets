@@ -25,11 +25,12 @@ A research doc is standalone. It does not contain status markers, links to open 
 ## Process
 
 1. Clarify what the user is asking. A research doc can cover multiple related questions if they naturally group together — it is organized around a topic, not rigidly one-question-per-file.
-2. Search broadly (multiple queries, different angles).
-3. Fetch and read promising sources before citing them. If a source looks relevant but cannot be read (paywall, video, etc.), move on unless nothing else covers that ground — then link it with a note.
-4. Discard junk. A source earns its place by directly informing the user's question. Do not pad with tangentially related links.
-5. If a doc is warranted (see Doc or chat), write it.
-6. Tell the user what you found.
+2. Gather local context before searching, unless the question is general or the invoker already has it. Read what the project already says about the topic (docs, rules, skills, `docs/decisions.md`, plans, related earlier work) so the research fits what exists and does not repeat it. This skill runs as a subagent: the invoker puts what it knows in the subagent prompt, and the subagent reads the rest.
+3. Search broadly (multiple queries, different angles).
+4. Fetch and read promising sources before citing them. If a source looks relevant but cannot be read (paywall, video, etc.), move on unless nothing else covers that ground — then link it with a note.
+5. Discard junk. A source earns its place by directly informing the user's question. Do not pad with tangentially related links.
+6. If a doc is warranted (see Doc or chat), write it.
+7. Tell the user what you found.
 
 ## Search strategy
 
@@ -38,6 +39,7 @@ A research doc is standalone. It does not contain status markers, links to open 
 - Videos: include when the topic is better explained visually or the user asks for videos. Search for short (<20 min), recent, popular results. Provide link, duration, channel. Do not over-explain that you cannot watch them — the user knows.
 - If web search is not surfacing YouTube results, try `youtube <topic> <year>`. If that fails, give the user search terms.
 - Quality over quantity. 2 good sources beat 10 unvetted ones.
+- Credibility: for every named standard, tool, or framework, find who uses or backs it and put a few words next to its name, such as "used by Cloudflare" or "Microsoft's standard". Check it against a source you read. One short phrase, not a sentence, in chat and in docs alike.
 
 ## Research doc format
 
