@@ -38,6 +38,10 @@ Otherwise keep going.
 1. Scan conversation, plan, **`open-questions.md`**, tasks for owner-only items.
 2. If blocking → list and **stop**; else proceed.
 
+## Issues
+
+If there is a plan, and neither the phase about to start nor the plan (an `Issues:` line under its title) has an `Issues:` line, create the issue with [plan issues](../plan-issues/SKILL.md) before starting. A plan-level line covers every phase without its own, so a plan that is one issue is handled once. It runs without asking, once (the line it writes stops repeats), and stays quick. Skip without comment when the repo has no GitHub remote or `gh` is not signed in.
+
 ## Task list (always a step)
 
 The task file may **already exist** or **not yet**—either way, **this step runs**:

@@ -39,7 +39,7 @@ Normative scope for **how many** tasks to touch lives in **`task-scope.mdc`** (`
 
 ## When a plan phase completes
 
-1. Mark phase done in plan: end its heading with ` — complete`.
+1. Mark phase done in plan: end its heading with ` — complete` and put `Completed: YYYY-MM-DD` (today) on the line directly under it. The commit hash is added when the plan is archived, because a commit cannot contain its own hash.
 2. Check all tasks for that phase.
 3. Resolve any open questions that were answered.
 4. Update decisions.md.
@@ -58,6 +58,7 @@ Record when: open question resolved, user makes a call during conversation, plan
 - **Plan vs tasks:** `.cursor/plans/<plan-name>/plan.md` describes phases only; it does not link to `tasks/*.md`. Task lists link *to* the plan phase they implement. Keeps a single direction of reference and less churn.
 - **Skills for plan artifacts:** New phase-level plans (no code, no task lists): [draft-plan](../skills/draft-plan/SKILL.md). New **`### Task N`** checklists under `.cursor/plans/<plan-name>/<phase>/tasks/*.md`: [create-task-list](../skills/create-task-list/SKILL.md).
 - **Plan lifecycle:** Active plans live in `.cursor/plans/<plan-name>/`. Finished plans move whole to `.cursor/plans-archive/<plan-name>/` ([archive-plan](../skills/archive-plan/SKILL.md)). Because plans move, nothing outside `.cursor/plans/` links to one (docs, code comments, README, tests); information other files need goes in `docs/`. Plans refer to other plans by name, not by path.
+- **Issue links:** A plan may have an `Issues:` line under its title, and a phase may have one under its heading (after `Completed:` if present). Each holds zero or more markdown links with the full URL, such as `[#12](https://github.com/<owner>/<repo>/issues/12)`. The mapping is loose: no phase needs an issue, and one issue can cover several phases or a whole plan. A line under the plan title covers every phase that has no line of its own. A missing line (on both the phase and the plan) means not decided yet, so run-task-loop creates an issue when it starts the phase; `Issues: none` means decided, no issue. Issues are created with [plan-issues](../skills/plan-issues/SKILL.md). The plan owns scope, phases, and tasks; the issue's open or closed state is set by the `Closes #N` commit.
 - Do not duplicate information across docs. Each piece of information lives in one place. Plans link to research; open questions link to research. If you find yourself writing the same thing in two files, pick one and link from the other.
 - No status markers in research docs.
 - Keep working docs concise — split or trim if long.

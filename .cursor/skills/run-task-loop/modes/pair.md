@@ -25,4 +25,4 @@ Fast, high-volume edits (mostly frontend) where the user sends loose instruction
 
 Add nothing to subagent prompts. Subagents that run at end of session ([run tests](../../testing/run-tests/SKILL.md), [verify commit](../../verify-commit/SKILL.md)) work as those skills say.
 
-Task list, test plan, and docs steps from [run-task-loop](../SKILL.md) are skipped until the end of session.
+Task list, test plan, and docs steps from [run-task-loop](../SKILL.md) are skipped until the end of session. The issues step is skipped.

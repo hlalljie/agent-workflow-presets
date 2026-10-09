@@ -69,7 +69,7 @@ Plans are living docs. As the user works through phases:
 1. Before starting a phase, review it for accuracy given any changes since creation.
 2. Make edits if needed.
 3. Create tasks from the phase using [create task list](../create-task-list/SKILL.md).
-4. After completing a phase, end its heading with ` — complete`, then the user moves to the next and repeats.
+4. After completing a phase, mark it complete as described in [workflow.mdc](../../rules/workflow.mdc), then the user moves to the next and repeats.
 
 ## Rules
 
@@ -77,6 +77,7 @@ Plans are living docs. As the user works through phases:
 - Phases produce a working or verifiable state.
 - Plans link to research — they do not duplicate it.
 - Plans reference open questions by number.
+- Do not write `Issues:` lines when drafting. [plan-issues](../plan-issues/SKILL.md) adds them later, if the user wants issues.
 - Never start implementation. Never create task lists. Never write code.
 - If the user gives feedback, update the plan file directly.
 - Follow `.cursor/rules/markdown-formatting.mdc`.

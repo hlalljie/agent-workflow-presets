@@ -21,7 +21,7 @@ description: Prepare and propose a commit. Use when the user asks to commit, pre
 - **Approval** is a **separate** message **after** that proposal: e.g. **`y`**, **"yes"**, **"approved"**, or a short edit ("use that message" / tweak subject only). Never treat **"go ahead"** in the **same** message as `/commit` as approval to commit unseen.
 - The user must be able to **read the proposed subject and body** before approving.
 
-**Proposal output:** short and scannable. **If** this commit finishes the **last open** task for a plan phase: state that clearly in the proposal to the user **and** in the commit message (subject or bullet); include ending that phase's heading in `plan.md` with ` — complete` (same commit as task checkboxes; see [workflow.mdc](../../rules/workflow.mdc)). **If** it does not complete a phase, say nothing about phases — do not list non-events.
+**Proposal output:** short and scannable. **If** this commit finishes the **last open** task for a plan phase: state that clearly in the proposal to the user **and** in the commit message (subject or bullet); mark that phase complete in `plan.md` (heading and `Completed:` date, per [workflow.mdc](../../rules/workflow.mdc)) in the same commit as the task checkboxes. Make this edit before printing the proposal, so the user approves what will be committed. **If** it does not complete a phase, say nothing about phases — do not list non-events.
 
 This applies no matter how the user phrases it — "commit this", "create a commit", "prepare a commit", "/commit", "go ahead and /commit" all mean **propose first** (steps 1–4), **commit only after** a clear follow-up approval (step 6).
 
@@ -60,7 +60,10 @@ Subject length: **~50 chars is a soft target** (the prefix counts); clarity beat
 
 When the commit finishes a plan phase, add a bullet (e.g. `Completes Phase 2`). Omit that bullet otherwise.
 
-When the work was done for a specific issue and this commit completes it, add `Closes #<number>` as the last bullet of the body, before the `chat:` line. Only add it when the issue is actually resolved by this commit; omit it for partial work or when no issue is involved.
+When the work is for a specific issue, add one bullet per issue at the end of the body, before the `chat:` line. The issue is the one the user named, or one in the `Issues:` line of the phase being worked, or of its plan when the phase has none (see [plan-issues](../plan-issues/SKILL.md)).
+- `Closes #<number>` only when this commit actually completes that issue. For a plan-level issue, that is the commit that finishes the plan's last phase.
+- `Refs #<number>` for partial work on it. GitHub defines only the closing words, so `Refs` is a convention.
+- Omit both when no issue is involved.
 
 The UUID links the commit to the chat where it was made. Use this chat's own ID: it is the folder name of **"Current agent's store"** in the session info, and it matches a transcript at `~/.cursor/projects/<project>/agent-transcripts/<uuid>/<uuid>.jsonl`.
 
@@ -74,7 +77,7 @@ The UUID is the folder name before the file. If another chat in the same project
 ## After committing
 
 - If the commit completes work tracked in a task list, update the task checkboxes in the same commit (see `.cursor/rules/workflow.mdc`).
-- If that was the final task for a plan phase, the phase heading in `plan.md` should already show ` — complete` in that same commit, and the commit message should state phase completion.
+- If that was the final task for a plan phase, the phase should already be marked complete in `plan.md` (heading and `Completed:` date) in that same commit, and the commit message should state phase completion.
 - Delete checked open questions that already existed in git before this commit. Checked questions that are new (never committed) stay — they need to be committed first so there's a record.
 - If this commit left a plan finished (every `## Phase N:` heading ` — complete` and the Backlog empty), follow [archive-plan](../archive-plan/SKILL.md) and propose the archive as its own commit through this skill.
 
