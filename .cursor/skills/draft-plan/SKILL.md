@@ -23,7 +23,7 @@ A plan file, and potentially open questions and research docs. **Never code, nev
 
 ## Process
 
-1. Read relevant context: codebase, conversation history, existing research, existing open questions. Also check `.cursor/plans-archive/` for finished plans in the same area.
+1. Read relevant context: codebase, conversation history, existing research, existing open questions. Also read `docs/decisions.md` if it exists, and check `.cursor/plans-archive/` for finished plans in the same area.
 2. If the codebase can answer a question, explore it instead of asking the user.
 3. Ask questions to resolve unknowns — one or two at a time, not a wall of questions. Work through the decision tree branch by branch. For each question, provide your recommended answer.
 4. Create open questions for anything that needs research or will block work later.

@@ -1,6 +1,6 @@
 ---
 description: How to manage open questions, tasks, plans, and decisions. Fires when editing plan, task, decision, or open-question files.
-globs: .cursor/plans/**/*.md, .cursor/**/open-questions.md
+globs: .cursor/plans/**/*.md, .cursor/**/open-questions.md, docs/decisions.md
 ---
 
 ## Open questions
@@ -49,9 +49,19 @@ Normative scope for **how many** tasks to touch lives in **`task-scope.mdc`** (`
 
 Each plan folder has a `decisions.md`. A concise log for "why did we decide this?" and for checking new work against past decisions. Not for regular reading.
 
-Format: bulleted list. **Bold decision** — rationale in one sentence. Link to research if relevant.
+Format: numbered list, `N. **Decision** — rationale in one sentence.` Link to research if relevant. Numbers are scoped to the file and permanent: never renumber, never reuse. If an older file has unnumbered bullets, number them in order the first time you edit it.
 
 Record when: open question resolved, user makes a call during conversation, plan confirmed.
+
+### Project decisions: `docs/decisions.md`
+
+A one-line index of the decisions that outlive their plan, so they stay visible after the plan is archived. The plan keeps the full entry and rationale; this file only points to it.
+
+- **What belongs:** a decision a future plan could contradict, or one an agent would otherwise ask about again: structure, technology, data, conventions, scope. Leave out choices that only mattered inside the plan.
+- **When:** in the same edit that records the decision in a plan's `decisions.md`. [archive-plan](../skills/archive-plan/SKILL.md) catches any that were missed. A decision made with no plan goes straight into this file, with no reference.
+- **Format:** grouped under `##` topic headings, one line each: `- **Decision** — one-sentence why. (plan-name/D3)`. Create the file on first use and list it in `docs/folder-structure.md`.
+- **Resolving a reference:** `(plan-name/D3)` means decision 3 in that plan's `decisions.md`. Look in `.cursor/plans/<plan-name>/`, then in `.cursor/plans-archive/<plan-name>/`. Refer to decisions by this key, never by path, because plans move.
+- **Replacing a decision:** append `— superseded by (plan-name/D#)` to the old line. Do not delete lines.
 
 ## General
 

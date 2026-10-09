@@ -59,6 +59,7 @@ Do not skip this step; scope and checkboxes live there.
 
 0. **Codebase survey (MANDATORY before any code)** — Before writing **any** file or editing **any** component, **read the existing codebase** for the area you are touching:
    - Read **`docs/folder-structure.md`** for the canonical map of what lives where.
+   - Read **`docs/decisions.md`** if it exists. Do not contradict a listed decision without saying so.
    - Read the **reference implementation** identified in **`.cursor/rules/repository-layout.mdc`** — the closest existing route, module, or component of the same type as what you're building.
    - Read any **shared primitives** (layout, shell, utilities) relevant to the task before creating new ones.
    - **Match the patterns you find.** Do not invent new folder names, new structural conventions, or new abstraction layers unless the task explicitly requires it and you explain why.
