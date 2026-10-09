@@ -14,4 +14,6 @@ When uncertain, say so and research first.
 
 **Applies to internal codebase too:** Before creating a new component, folder, utility, or pattern, **read the existing codebase** to see how the same kind of thing is already done. Check `docs/folder-structure.md`, then read the nearest existing implementation. Do not assume a structure is correct because it "makes sense" — verify it matches what already exists.
 
+**Missing plan files:** finished plans move to `.cursor/plans-archive/<plan-name>/`. If a path under `.cursor/plans/` does not exist, check the same path under `.cursor/plans-archive/` before treating it as gone.
+
 If the question requires comparing options or making an architectural decision, use the [research skill](../skills/research/SKILL.md) for a deeper investigation.

@@ -13,6 +13,7 @@ What existing projects must do when the harness changes. `/blueprint-apply` show
 
 ## Unreleased
 
+- New `archive-plan` skill moves a finished plan from `.cursor/plans/` to `.cursor/plans-archive/`, and the commit skill triggers it after a plan's last phase. Phase headings now end with ` — complete` when done, agents check the archive when a plan path is missing, and nothing outside `.cursor/plans/` should link to a plan. Action: none; it arrives with the next `/blueprint-apply workflow=harness@presets`. To archive plans you already finished, run `mv .cursor/plans/<name> .cursor/plans-archive/<name>` and fix any links into them.
 - New `catch-me-up` skill summarizes where you left off, mainly from recent chats, backed by commits, plans, and tasks. Action: none; it arrives with the next `/blueprint-apply workflow=harness@presets`.
 - Commit subjects now use a Conventional Commits prefix (`type(scope): subject`, scope optional, `harness` scope suggested for rules and skills), and commits that complete an issue include `Closes #N`. Action: none; existing history is not rewritten.
 - Harness is now a blueprint part (`parts/workflow/harness`). Action: none for existing projects; run `/blueprint-apply workflow=harness@presets` once to adopt it and start receiving updates.

@@ -19,10 +19,11 @@ A plan file, and potentially open questions and research docs. **Never code, nev
 - Open questions: `.cursor/plans/<plan-name>/open-questions.md`
 - Decisions: `.cursor/plans/<plan-name>/decisions.md`
 - Phase task lists: `.cursor/plans/<plan-name>/<phase>/tasks/tasks.md`
+- Finished plans move whole to `.cursor/plans-archive/<plan-name>/` ([archive-plan](../archive-plan/SKILL.md)).
 
 ## Process
 
-1. Read relevant context: codebase, conversation history, existing research, existing open questions.
+1. Read relevant context: codebase, conversation history, existing research, existing open questions. Also check `.cursor/plans-archive/` for finished plans in the same area.
 2. If the codebase can answer a question, explore it instead of asking the user.
 3. Ask questions to resolve unknowns — one or two at a time, not a wall of questions. Work through the decision tree branch by branch. For each question, provide your recommended answer.
 4. Create open questions for anything that needs research or will block work later.
@@ -68,7 +69,7 @@ Plans are living docs. As the user works through phases:
 1. Before starting a phase, review it for accuracy given any changes since creation.
 2. Make edits if needed.
 3. Create tasks from the phase using [create task list](../create-task-list/SKILL.md).
-4. After completing a phase, the user moves to the next and repeats.
+4. After completing a phase, end its heading with ` — complete`, then the user moves to the next and repeats.
 
 ## Rules
 

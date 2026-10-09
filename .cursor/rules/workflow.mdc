@@ -39,10 +39,11 @@ Normative scope for **how many** tasks to touch lives in **`task-scope.mdc`** (`
 
 ## When a plan phase completes
 
-1. Mark phase done in plan.
+1. Mark phase done in plan: end its heading with ` — complete`.
 2. Check all tasks for that phase.
 3. Resolve any open questions that were answered.
 4. Update decisions.md.
+5. If every phase is complete and the Backlog is empty, the plan is finished. The commit skill then archives it with [archive-plan](../skills/archive-plan/SKILL.md).
 
 ## Decisions
 
@@ -56,6 +57,7 @@ Record when: open question resolved, user makes a call during conversation, plan
 
 - **Plan vs tasks:** `.cursor/plans/<plan-name>/plan.md` describes phases only; it does not link to `tasks/*.md`. Task lists link *to* the plan phase they implement. Keeps a single direction of reference and less churn.
 - **Skills for plan artifacts:** New phase-level plans (no code, no task lists): [draft-plan](../skills/draft-plan/SKILL.md). New **`### Task N`** checklists under `.cursor/plans/<plan-name>/<phase>/tasks/*.md`: [create-task-list](../skills/create-task-list/SKILL.md).
+- **Plan lifecycle:** Active plans live in `.cursor/plans/<plan-name>/`. Finished plans move whole to `.cursor/plans-archive/<plan-name>/` ([archive-plan](../skills/archive-plan/SKILL.md)). Because plans move, nothing outside `.cursor/plans/` links to one (docs, code comments, README, tests); information other files need goes in `docs/`. Plans refer to other plans by name, not by path.
 - Do not duplicate information across docs. Each piece of information lives in one place. Plans link to research; open questions link to research. If you find yourself writing the same thing in two files, pick one and link from the other.
 - No status markers in research docs.
 - Keep working docs concise — split or trim if long.

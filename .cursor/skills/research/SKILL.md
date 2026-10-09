@@ -18,7 +18,7 @@ Invoked explicitly when a decision needs information gathering. Always spawn a s
 
 If unsure, answer in chat. Everything below about the doc applies only when one is written.
 
-A research doc is standalone. It does not contain status markers, links to open questions, or links to plans. Other docs link to it; it links to nothing upstream.
+A research doc is standalone. It does not contain status markers, links to open questions, or links to plans. Other docs in the same plan link to it; it links to nothing upstream. Nothing outside `.cursor/plans/` links to it, because the plan folder moves when the plan finishes.
 
 **File location:** `.cursor/plans/<plan-name>/research/<topic>.md`.
 

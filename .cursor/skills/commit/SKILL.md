@@ -21,7 +21,7 @@ description: Prepare and propose a commit. Use when the user asks to commit, pre
 - **Approval** is a **separate** message **after** that proposal: e.g. **`y`**, **"yes"**, **"approved"**, or a short edit ("use that message" / tweak subject only). Never treat **"go ahead"** in the **same** message as `/commit` as approval to commit unseen.
 - The user must be able to **read the proposed subject and body** before approving.
 
-**Proposal output:** short and scannable. **If** this commit finishes the **last open** task for a plan phase: state that clearly in the proposal to the user **and** in the commit message (subject or bullet); include updating that phase's `###` line in `plan.md` with ` — complete` (same commit as task checkboxes — see the "Phases" section at the top of that plan). **If** it does not complete a phase, say nothing about phases — do not list non-events.
+**Proposal output:** short and scannable. **If** this commit finishes the **last open** task for a plan phase: state that clearly in the proposal to the user **and** in the commit message (subject or bullet); include ending that phase's heading in `plan.md` with ` — complete` (same commit as task checkboxes; see [workflow.mdc](../../rules/workflow.mdc)). **If** it does not complete a phase, say nothing about phases — do not list non-events.
 
 This applies no matter how the user phrases it — "commit this", "create a commit", "prepare a commit", "/commit", "go ahead and /commit" all mean **propose first** (steps 1–4), **commit only after** a clear follow-up approval (step 6).
 
@@ -76,6 +76,7 @@ The UUID is the folder name before the file. If another chat in the same project
 - If the commit completes work tracked in a task list, update the task checkboxes in the same commit (see `.cursor/rules/workflow.mdc`).
 - If that was the final task for a plan phase, the phase heading in `plan.md` should already show ` — complete` in that same commit, and the commit message should state phase completion.
 - Delete checked open questions that already existed in git before this commit. Checked questions that are new (never committed) stay — they need to be committed first so there's a record.
+- If this commit left a plan finished (every `## Phase N:` heading ` — complete` and the Backlog empty), follow [archive-plan](../archive-plan/SKILL.md) and propose the archive as its own commit through this skill.
 
 ## Pull requests
 
