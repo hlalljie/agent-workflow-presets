@@ -8,7 +8,7 @@ A portable `.cursor/` setup for agent-assisted development. Drop into any projec
 
 **`.cursor/skills/`** — Invocable procedures: planning, task execution, committing, PRs, testing. The agent reads these when you invoke them by name or trigger phrase.
 
-**`docs/folder-structure.md`** — A template for documenting your project's folder layout. This is the most-referenced doc in the system — fill it in first.
+**`docs/folder-structure.md`** — A template for documenting your project's folder layout, and the one list of every doc in the project. This is the most-referenced doc in the system — fill it in first.
 
 ## Setup for a new project
 
@@ -36,7 +36,8 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 - **`repository-layout.mdc`** — canonical map of repo folders (fill in per project)
 - **`markdown-formatting.mdc`** — editor-readable markdown conventions
 - **`shell-environment.mdc`** — zsh on macOS, PowerShell on Windows
-- **`code-documentation.mdc`** — document why, not what
+- **`documentation.mdc`** — where each kind of doc lives (README, decisions, architecture, runbooks, `.env.example`) and when to update it
+- **`code-documentation.mdc`** — code comments: why not what, TSDoc style, `TODO(#issue)`
 - **`nextjs.mdc`** — Next.js version awareness (fill in version or remove)
 
 ## Skills overview
@@ -50,6 +51,7 @@ For a manual alternative (no agent): `grep -rn "TODO:" .cursor/ docs/` lists eve
 - **`catch-me-up`** — short summary of where you left off, mainly from recent chats, backed by commits, plans, and tasks; read-only
 - **`archive-plan`** — move a finished plan from `.cursor/plans/` to `.cursor/plans-archive/` so only active plans remain, or restore one; the commit skill triggers it after a plan's last phase
 - **`plan-issues`** — create GitHub issues for a plan or its phases on its own (`Issues: none` opts out) and link them in the plan with a loose many-to-many mapping
+- **`write-docs`** — decide which docs a change needs and write or update them; templates for architecture and runbooks
 - **`research`** — deep research producing a standalone reference doc
 - **`verify-commit`** — pre-commit gate: tests, build, docs freshness, scoped review
 - **`testing/add-tests`** — write a test plan and create all test artifacts

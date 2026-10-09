@@ -52,16 +52,15 @@ For each top-level folder under `src/`, write one bullet explaining what lives t
 
 If the project is early-stage and the structure is trivial, keep this short. Do not fabricate folders that don't exist yet.
 
+Also fill in the `docs/` section: list every doc the project already has (the README, anything in `docs/`) with a one-line purpose. This file is the one list of the project's docs ([documentation.mdc](../../rules/documentation.mdc)). List only docs that exist.
+
 ### 4. Fill in `.cursor/rules/repository-layout.mdc`
 
-This rule points at the folder-structure doc plus any domain-specific docs (e.g. `docs/auth.md`, `docs/<domain>/README.md`). It also names the **reference implementation** — the canonical route, module, or component that other features should mirror.
+This rule points at the folder-structure doc, which is the one list of the project's docs. It also names the **reference implementation** — the canonical route, module, or component that other features should mirror.
 
-Ask the owner:
+Ask the owner: what's the reference implementation agents should read before creating new features? (e.g. "the `/home` route" or "the `users` service")
 
-1. What domain docs exist or should exist? (list them; it's fine if none yet)
-2. What's the reference implementation agents should read before creating new features? (e.g. "the `/home` route" or "the `users` service")
-
-Replace the TODOs with their answers. If the project is too new to have a reference implementation, leave that section with a short note saying so and remove the TODO.
+Replace the TODOs with the answer. If the project is too new to have a reference implementation, leave that section with a short note saying so and remove the TODO.
 
 ### 5. Fill in or remove stack-specific rules
 
@@ -76,7 +75,7 @@ If the project uses a different framework the owner wants version awareness for 
 
 If the project already had a `README.md` before the copy, the agent-presets README may have overwritten it. Check git, restore the project's own README, and discard the presets README — it's not meant for the new project.
 
-If the project had no README, the presets README should be replaced with a real project README. Ask the owner for the project's purpose and one-line description, and write that.
+If the project had no README, the presets README should be replaced with a real project README. Ask the owner for the project's purpose and one-line description, and write the README from the skeleton in [write-docs](../write-docs/SKILL.md).
 
 ### 7. Offer cleanup
 

@@ -1,15 +1,29 @@
 ---
 description: Documentation standards for code comments and docstrings
-globs: src/**/*.{ts,tsx}
+globs: src/**/*.ts, src/**/*.tsx
 alwaysApply: false
 ---
 
 Document why, not what. Only add a comment if it conveys information the code itself cannot. Never narrate what the code obviously does.
 
-Do document: purpose, constraints, trade-offs, non-obvious decisions, known debt with pointers to tasks.
+Do document: purpose, constraints, trade-offs, non-obvious decisions, known debt (see TODOs below).
 
 Do not document: obvious logic, simple wrappers, self-evident one-liners.
 
 Module/file-level comments: explain what the module owns and any non-obvious limitations.
 
-Function/component comments: only when there are meaningful constraints, failure modes, or side effects beyond what the name and types convey.
+## Comment kinds
+
+- **`/** */` doc comment** — the contract of an exported symbol, only when its name and types do not already say it: units, edge cases, side effects, failure modes. Write TSDoc style: no types in tags, `@param name - description` with the hyphen, and only tags that add information (`@throws`, `@deprecated` plus what to use instead, `@example`).
+- **`//` comment** — why the implementation is the way it is.
+
+## TODOs
+
+`TODO(#123): reason`, pointing at the GitHub issue that tracks it. With no issue, write `TODO: reason` and no link. Never point at a plan or task file, because plans move (see `workflow.mdc`).
+
+## Do not write
+
+- Comments that narrate the change ("now uses X", "added for Y")
+- Banner or divider comments
+- Comments that restate a name or type
+- Edits to comments unrelated to the change

@@ -25,7 +25,8 @@ The **invoker** (e.g. [run task loop](../run-task-loop/SKILL.md)) runs [commit s
 
 ## 2. Docs freshness
 
-If the diff moved, renamed, or deleted files/exports/types: grep `docs/`, `tests/manual/`, `.cursor/rules/` for stale paths. **FAIL** if any active doc references a path or symbol that no longer exists. Key docs to check: **`docs/folder-structure.md`** and **`.cursor/rules/repository-layout.mdc`**, plus any domain docs listed there. Skip when the diff only changed logic without touching file paths or public names.
+- **Dead references (FAIL).** If the diff moved, renamed, or deleted files/exports/types: grep `docs/`, `tests/manual/`, `.cursor/rules/`, and `README.md` for stale paths. **FAIL** if any active doc references a path or symbol that no longer exists. Key docs to check: **`docs/folder-structure.md`**, every doc it lists, and **`.cursor/rules/repository-layout.mdc`**. Skip when the diff did not touch file paths or public names.
+- **Likely stale content (warning).** Use the "What does this change need?" list in [write-docs](../write-docs/SKILL.md). If the diff changed something a doc covers (a flow, an env var, an ops step, a decision) and that doc is not in the diff, add it to **Docs to update** in the report. Do not FAIL for it, and do not edit the doc: the invoker updates it.
 
 ## 3. Scoped review (changed code only)
 
@@ -35,7 +36,7 @@ Light fit-in-repo pass.
 
 ## 4. Report
 
-**PASS** / **FAIL** with failures and must-fix items. **Stop** — no [commit skill](../commit/SKILL.md) here.
+**PASS** / **FAIL** with failures and must-fix items, plus **Docs to update** (doc and reason, one line each) when §2 found any. **Stop** — no [commit skill](../commit/SKILL.md) here.
 
 ## Not in scope
 

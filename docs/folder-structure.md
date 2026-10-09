@@ -2,7 +2,7 @@
 
 <!-- TODO: Fill in this file for your project. This is the most-referenced doc in the agent system.
   Rules and skills that check it: repository-layout.mdc, research-before-suggesting.mdc,
-  conservative-file-creation.mdc, run-task-loop, add-tests.
+  conservative-file-creation.mdc, documentation.mdc, run-task-loop, write-docs, add-tests.
 
   Describe every meaningful folder from the repository root. Be specific about what lives where
   and why. Agents use this to know where to read before creating anything new.
@@ -28,9 +28,18 @@ Paths from **repository root** (directory with `package.json`).
 - **`tests/manual/`** — Manual browser checklists (Markdown).
 - **`tests/plans/`** — Standalone test plans when no task file exists.
 
+## `docs/` — Documentation
+
+<!-- TODO: List every doc this project has, with a one-line purpose. Only list docs that exist.
+  The standard set, created on first use (see .cursor/rules/documentation.mdc):
+  decisions.md, architecture.md, runbooks/<task>.md, and docs/<domain>/ for a part that outgrows architecture.md.
+  README.md and .env.example live at the repository root; list them here too. -->
+
+- **`docs/folder-structure.md`** — this file: where things live, and the list of every doc.
+
 ## Other top-level folders
 
-<!-- TODO: Add entries for data/, mocks/, docs/, legacy/, etc. as they exist in your project. -->
+<!-- TODO: Add entries for data/, mocks/, legacy/, etc. as they exist in your project. -->
 
 ## Adding a new [feature type — e.g. route, widget, service]
 

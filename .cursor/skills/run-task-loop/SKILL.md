@@ -60,6 +60,7 @@ Do not skip this step; scope and checkboxes live there.
 0. **Codebase survey (MANDATORY before any code)** — Before writing **any** file or editing **any** component, **read the existing codebase** for the area you are touching:
    - Read **`docs/folder-structure.md`** for the canonical map of what lives where.
    - Read **`docs/decisions.md`** if it exists. Do not contradict a listed decision without saying so.
+   - Read **`docs/architecture.md`** if it exists, for the parts, flows, and constraints your change must respect.
    - Read the **reference implementation** identified in **`.cursor/rules/repository-layout.mdc`** — the closest existing route, module, or component of the same type as what you're building.
    - Read any **shared primitives** (layout, shell, utilities) relevant to the task before creating new ones.
    - **Match the patterns you find.** Do not invent new folder names, new structural conventions, or new abstraction layers unless the task explicitly requires it and you explain why.
@@ -71,7 +72,7 @@ Do not skip this step; scope and checkboxes live there.
 
 3. **Run tests** — [run tests](../testing/run-tests/SKILL.md) against the plan. Loop failures or hit **Stop only for**.
 
-4. **Update docs** — After code is stable and tests pass: if the task moved, renamed, or deleted files/exports/types, grep `docs/`, `tests/manual/`, `.cursor/rules/` for stale paths and fix them. Key docs: **`docs/folder-structure.md`**, **`.cursor/rules/repository-layout.mdc`**, and any domain docs listed there. Skip when the task only changed logic without touching file paths or public names.
+4. **Update docs** — After code is stable and tests pass: follow [write-docs](../write-docs/SKILL.md) for what the task changed, and update the docs yourself. Do not leave them for [verify commit](../verify-commit/SKILL.md) to find. Skip silently when the task needs no doc update.
 
 5. **Task checkboxes** — Update **`### Task N`** in the task file when work completes ([workflow.mdc](../../rules/workflow.mdc)).
 
@@ -84,7 +85,7 @@ Spawn subagents for all implementation and exploration work. Subagent models fol
 ## Handoff
 
 1. **READ and follow [phase-summary](../phase-summary/SKILL.md)** — open the skill file, use its exact output format, then stop. Do not infer the format from memory.
-2. If owner says **y** → run [verify commit](../verify-commit/SKILL.md) spawned as a subagent, then [commit skill](../commit/SKILL.md) (**propose**; owner approves).
+2. If owner says **y** → run [verify commit](../verify-commit/SKILL.md) spawned as a subagent. If it lists **Docs to update**, update them with [write-docs](../write-docs/SKILL.md) first. Then the [commit skill](../commit/SKILL.md) (**propose**; owner approves).
 3. If owner says **n** → ask what needs to change before committing.
 
 **run-task-loop** = delivery + task + add-tests + app + run-tests; **verify-commit** = pre-commit gate; **commit** = git.

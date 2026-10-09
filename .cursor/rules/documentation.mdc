@@ -1,0 +1,27 @@
+---
+description: Where each kind of documentation lives and when to update it.
+alwaysApply: true
+---
+
+## Where information goes
+
+Lasting docs live in `README.md`, `docs/`, and `.env.example`. Working docs (plans, research, open questions, plan decisions) live in `.cursor/plans/` and follow `workflow.mdc`. Lasting docs never link to working docs, because plans move.
+
+Put each piece of information in exactly one of these:
+
+- **What the project is and how to run it** — `README.md`
+- **Where things live** — `docs/folder-structure.md`. It is also the list of every doc in the project.
+- **Why a choice was made** — `docs/decisions.md` (format in `workflow.mdc`)
+- **How it works now** — `docs/architecture.md`: Overview, Parts, Flows, Constraints. Current state only, no history.
+- **How to do one ops task** (deploy, rollback, restore) — `docs/runbooks/<task>.md`
+- **Environment variables** — `.env.example` only, one comment per variable
+- **A part that outgrows `architecture.md`** — `docs/<domain>/` (`README.md` for Parts, `dataflow.md` for Flows), only when listed in `docs/folder-structure.md`. Propose the split; do not do it unprompted.
+
+Create `architecture.md`, `runbooks/`, and a missing doc on first use, from the templates in [write-docs](../skills/write-docs/SKILL.md), and list each in `docs/folder-structure.md` in the same change. Never create an empty doc, and never add a new kind of doc: if information fits none of the above, say so.
+
+## Keeping docs current
+
+- Update docs in the same change as the code, yourself. A change needs a doc update if it changes where things live, a decision, a flow or boundary in `architecture.md`, an ops step or env var, or what the project is or how to run it. [write-docs](../skills/write-docs/SKILL.md) has the checklist.
+- Each fact lives in one doc. Link to it; do not copy it.
+- Delete what is no longer true. Do not leave it marked outdated.
+- Comments in code say why, not what, in any language. Syntax is in `code-documentation.mdc`. Markdown style is in `markdown-formatting.mdc`.
