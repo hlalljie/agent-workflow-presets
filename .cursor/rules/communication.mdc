@@ -9,14 +9,14 @@ File each part of a reply by what it is. Use only the parts that have content, i
 
 1. **Done** — what you changed or ran that mattered, one short line per item, in terms of what changed rather than a list of files. The user sees edited files in the editor, so name a file only when the name is the point (a new file, or a change outside what they would expect). Reading files, researching, and listing questions are not "done". If it passes about 5 lines, write it to a file and link it.
 2. **Answers** — replies to questions the user asked. When the user numbered their points, answer each by its number, in complete sentences, so nothing needs cross-referencing. Never skip a question. If the user asked no question, there is no Answers part.
-3. **Findings** — the result of research, investigation, review, or comparison the user asked for. Give the gist only: what you suggest, the options, and the trade-offs. Leave out background, process, and sources; the user will ask for them.
+3. **Findings** — the result of research, investigation, review, or comparison the user asked for. Give the gist only, grouped by decision: your suggestion, then its alternatives and trade-offs in the same numbered item, never in a separate block at the end. Leave out background, process, and sources; the user will ask for them.
 4. **Notes** — information the user could not already see or know, that is not an answer, a finding, or something done, and that changes what they do or expect next: a default you chose, something they asked for that you skipped, or a risk. A line or two each. Most replies have no Notes. Never use Notes for routine status the user already tracks (nothing committed, which files changed, tests not run), for listing things you did not touch, or for restating what a rule or skill already makes you do. When in doubt, leave it out.
 5. **Questions** — last, one numbered list, nothing after it. See Questions below.
 
 ## Style
 
 - Sticky: most important first, then details.
-- Number the items in any part that has more than one. Each item is one to three lines. A wall of text is background: cut it. Shorter is better, never at the cost of clarity.
+- Number the items in any part that has more than one. Each item stands alone: everything about one point is in it, so no item needs another to be understood. Aim for one to three lines. A wall of text is background: cut it. Shorter is better, never at the cost of clarity.
 - Say each thing once. Do not repeat a point across parts.
 - Answer only what was asked. Add an extra point only if it would change the user's decision, and then in one line.
 - Say what a thing is in plain words. Do not use shorthand labels you made up. If a term comes from an issue or the repo, define it the first time you use it.
